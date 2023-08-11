@@ -1,15 +1,20 @@
 # receipe-app-api
+
+## Backend:
 Receipe API project learning Django Rest Framework and more
 
 Following along with [Vuild a Backend REST API with Python & Django](https://www.udemy.com/course/django-python-advanced/learn/lecture/) course
 
+## Frontend
+
+My own creation - trying to add a frontend ina JavaScript framework
+
 # Docker commands:
+
+## Building
 
 ````
 docker build .
-````
-
-````
 docker-compose build .
 ````
 
