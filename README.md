@@ -10,7 +10,12 @@ docker build .
 ````
 
 ````
-docker.compose run --rm app sh -c "python manage.py collectstatic"
+docker-compose build .
+````
+
+later?
+````
+docker.compose run --rm backend sh -c "python manage.py collectstatic"
 
 ````
 

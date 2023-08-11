@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-    app:
+    backend:
         build:
-            context: .
+            context: ./backend
         ports:
             - "8080:8080"
         volumes:
-            - ./app:/app
+            - ./backend/app:/backend/app
         command:
             sh -c "python manage.py runserver 0.0.0.0:8000"
