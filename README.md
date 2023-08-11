@@ -11,27 +11,32 @@ My own creation - trying to add a frontend ina JavaScript framework
 
 # Docker commands:
 
-## Building
+## Building:
 
 ````
 docker build .
 docker-compose build .
 ````
 
+## Running various tools
 for running backend app (check with backend folder configuration):
 ````
-docker.compose run --rm backend sh -c "python manage.py collectstatic"
+docker-compose run --rm backend sh -c "python manage.py collectstatic"
 ````
 
 for running linting (untested):
 ````
-docker.compose run --rm backend sh -c "flake8"
+docker-compose run --rm backend sh -c "flake8"
 ````
 
 for unit testing: using django test *suite*
 ````
-docker.compose run --rm backend sh -c "python manage.py test"
+docker-compose run --rm backend sh -c "python manage.py test"
 ````
+
+## Creating python project:
+```
+docker-compose run --rm backend sh -c "django-admin startproject app ."
 
 
 # Codechecker:
