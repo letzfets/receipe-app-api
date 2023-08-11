@@ -37,6 +37,7 @@ docker-compose run --rm backend sh -c "python manage.py test"
 ## Creating python project:
 ```
 docker-compose run --rm backend sh -c "django-admin startproject app ."
+```
 
 
 # Codechecker:
