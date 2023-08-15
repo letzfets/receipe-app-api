@@ -3,7 +3,11 @@
 ## Backend:
 Receipe API project learning Django Rest Framework and more
 
-Following along with [Vuild a Backend REST API with Python & Django](https://www.udemy.com/course/django-python-advanced/learn/lecture/) course
+Following along with [Vuild a Backend REST API with Python & Django](https://www.udemy.com/course/django-python-advanced/learn/lecture/) 
+
+### Codechecker:
+
+[Codechecker](https://codechecker.app/checker/londonappdev/start/recipe-app-api-2/s-05-project-setup-04-create-python-requirements-file/)
 
 ## Frontend
 
@@ -44,7 +48,15 @@ docker-compose run --rm backend sh -c "django-admin startproject app ."
 docker-compose up
 ````
 
+## Combing frontend and backend in one repo:
 
-# Codechecker:
+based on [How to configure Docker with two containers: Frontend and Backend](https://patrickdesjardins.com/blog/docker-nodejs-frontend-backend)
 
-[Codechecker](https://codechecker.app/checker/londonappdev/start/recipe-app-api-2/s-05-project-setup-04-create-python-requirements-file/)
+# Github Actions
+
+Find actions in [Github Marketplace](https://github.com/marketplace/actions/)
+
+docker-compose is preinstalled in ubuntu!
+
+
+
