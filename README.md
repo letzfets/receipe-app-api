@@ -75,6 +75,7 @@ to Dockerfile.
 
 Add svelte node adapter in frontend directory: `docker run -it -w /app --mount type=bind,src="$(pwd)",target=/app frontend npm i -D @sveltejs/adapter-node`
 or through compose-file in root directory of project: `docker-compose run -rm frontend npm i -D @sveltejs/adapter-node`
+or after `docker-compose up -d`: `docker-compose run <image-name> npm i -D <...>`
 
 Build the container with `docker build -t frontend --progress=plain .` and run it with `docker run -p 3000:3000 frontend`
 
