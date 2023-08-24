@@ -16,6 +16,7 @@ services:
     frontend:
         build:
             context: ./frontend
+            target: build
             args:
                 - DEV=true
         ports:
