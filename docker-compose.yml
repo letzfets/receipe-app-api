@@ -12,3 +12,16 @@ services:
             - ./backend/app:/app
         command:
             sh -c "python manage.py runserver 0.0.0.0:8000"
+    
+    frontend:
+        build:
+            context: ./frontend
+            args:
+                - DEV=true
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./frontend:/app
+            - ./frontend/node_modules:/app/node_modules
+        command:
+            npm run dev
