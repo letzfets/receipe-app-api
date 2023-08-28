@@ -5,7 +5,7 @@ on: [push]
 
 jobs:
     test-lint:
-        name: Test and Lint
+        name: Test, Format and Lint
         runs-on: ubuntu-20.04
         steps:
             - name: Login to Docker Hub
@@ -15,7 +15,15 @@ jobs:
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v2
-            - name: Test
-              run: docker-compose run --rm backend sh -c "python manage.py test"
-            - name: Lint
+            - name: Format backend
+              run: docker-compose run --rm backend sh -c "black ."
+            - name: Lint backend
               run: docker-compose run --rm backend sh -c "flake8"
+            - name: Test backend
+              run: docker-compose run --rm backend sh -c "python manage.py test"
+            - name: Format frontend
+              run: docker-compose run --rm frontend sh -c "npm run format"
+            - name: Lint frontend
+              run: docker-compose run --rm frontend sh -c "npm run lint"
+            - name: Test frontend
+              run: docker-compose run --rm frontend sh -c "npm run test:unit"
