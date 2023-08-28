@@ -4,7 +4,7 @@ name: Checks
 on: [push]
 
 jobs:
-    test-lint:
+    format-test-lint:
         name: Test, Format and Lint
         runs-on: ubuntu-20.04
         steps:
@@ -15,8 +15,8 @@ jobs:
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v2
-            - name: Format backend
-              run: docker-compose run --rm backend sh -c "black ."
+            # - name: Format backend
+            #   run: docker-compose run --rm backend sh -c "black ."
             - name: Lint backend
               run: docker-compose run --rm backend sh -c "flake8"
             - name: Test backend
