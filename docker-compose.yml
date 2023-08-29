@@ -24,6 +24,5 @@ services:
         volumes:
             - ./frontend:/app
             - ./frontend/node_modules:/app/node_modules
-            - ./frontend/.svelte-kit:/app/.svelte-kit
         command:
             npm run dev
