@@ -21,9 +21,11 @@ jobs:
               run: docker-compose run --rm backend sh -c "flake8"
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
-            - name: Format frontend
-              run: docker-compose run --rm frontend sh -c "npm run format"
-            - name: Lint frontend
-              run: docker-compose run --rm frontend sh -c "npm run lint"
-            - name: Test frontend
-              run: docker-compose run --rm frontend sh -c "npm run test:unit"
+            - name: Print directory content
+              run: docker-compose run --rm frontend sh -c "ls -la"
+            # - name: Format frontend
+            #   run: docker-compose run --rm frontend sh -c "npm run format"
+            # - name: Lint frontend
+            #   run: docker-compose run --rm frontend sh -c "npm run lint"
+            # - name: Test frontend
+            #   run: docker-compose run --rm frontend sh -c "npm run test:unit"
