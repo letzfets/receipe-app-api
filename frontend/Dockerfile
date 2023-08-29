@@ -2,8 +2,7 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 # COPY .svelte-kit/ .svelte-kit/
-RUN npm install
-RUN ls -la node_modules/
+RUN npm install && ls -la node_modules/
 COPY . .
 RUN npm run build
 EXPOSE 3000
