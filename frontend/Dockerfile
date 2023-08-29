@@ -1,7 +1,7 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-COPY .svelte-kit/ .svelte-kit/
+# COPY .svelte-kit/ .svelte-kit/
 RUN npm install
 RUN ls -la node_modules/
 COPY . .
