@@ -4,5 +4,4 @@ Dockerfile
 .git
 .gitignore
 README.md
-# **/node_modules
 **/.env

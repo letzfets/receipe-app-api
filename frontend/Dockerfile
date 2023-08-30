@@ -2,11 +2,11 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 # COPY .svelte-kit/ .svelte-kit/
+RUN npm install
+COPY . .
 RUN pwd
 RUN ls -la
-RUN npm install && npm run prepare
-COPY . .
-RUN npm run build
+RUN npm run prepare && npm run build
 # CMD ["node", "./build/index.js"]
 
 FROM node:20-alpine
