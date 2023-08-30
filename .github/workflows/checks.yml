@@ -26,7 +26,7 @@ jobs:
             - name: Print directory name
               run: pwd
             - name: Print directory content
-              run: ls -la frontend/
+              run: ls -la frontend/node_modules/
             # - name: Build frontend
             #   run: docker build -t frontend:dev --target build .
             # - name: Format frontend
