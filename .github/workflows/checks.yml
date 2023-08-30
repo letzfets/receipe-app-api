@@ -26,7 +26,7 @@ jobs:
             - name: Directory content
               run: ls -la
             - name: Format frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             # - name: Format frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
             # - name: Print out file that should be changed by prettier
@@ -46,7 +46,7 @@ jobs:
                   else
                       echo "No files changed"
                       echo "changed=false" >> $GITHUB_OUTPUT
-                  fi
+                  fi && git diff
             - name: Create pull request with changes
               if: steps.check_changes.outputs.changed == 'true'
               uses: peter-evans/create-pull-request@v5
