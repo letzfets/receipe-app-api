@@ -26,7 +26,7 @@ jobs:
             - name: Directory content
               run: ls -la
             - name: Format frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la
             # - name: Format frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
             # - name: Print out file that should be changed by prettier
