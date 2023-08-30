@@ -22,7 +22,7 @@ jobs:
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
             - name: Print directory content
-              run: docker-compose run --rm frontend sh -c "ls -la node_modules/"
+              run: docker-compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "ls -la node_modules/"
             - name: Print directory name
               run: pwd
             - name: Print directory content

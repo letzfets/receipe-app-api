@@ -57,32 +57,20 @@ Then build the container with `docker build -t frontend --progress=plain .` in t
 Then add svelte:
 
 ```
-docker-compose run --rm frontend sh -c "npm create svelte@4.2.0"
+docker-compose run -f compose.yml -f compose.dev.yml --rm frontend sh -c "npm create svelte@4.2.0"
 ```
-
-Then adding
-
-```
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["node", "./build/index.js"]
-```
-
-to Dockerfile.
 
 Add svelte node adapter in frontend directory: `docker run -it -w /app --mount type=bind,src="$(pwd)",target=/app frontend npm i -D @sveltejs/adapter-node`
-or through compose-file in root directory of project: `docker-compose run -rm frontend npm i -D @sveltejs/adapter-node`
-or after `docker-compose up -d`: `docker-compose run <image-name> npm i -D <...>`
+or through compose-file in root directory of project: `docker-compose run -f compose.yml -f compose.dev.yml -rm frontend npm i -D @sveltejs/adapter-node`
+or after `docker-compose -f compose.yml -f compose.dev.tml up -d`: `docker-compose run <image-name> npm i -D <...>`
 
 Build the container with `docker build -t frontend --progress=plain .` and run it with `docker run -p 3000:3000 frontend`
 
 ## Starting a service
 ````
-docker-compose up
+docker-compose -f compose.yml -f compose.dev.tml up -d
 ````
+
 
 ## Combing frontend and backend in one repo:
 
