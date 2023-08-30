@@ -20,7 +20,11 @@ jobs:
             - name: Lint backend
               run: docker-compose run --rm backend sh -c "flake8"
             - name: Test backend
-              run: docker-compose run --rm backend sh -c "python manage.py test"  
+              run: docker-compose run --rm backend sh -c "python manage.py test"
+            - name: Directory path
+              run: pwd
+            - name: Directory content
+              run: ls -la
             - name: Format frontend
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             # - name: Format frontend
