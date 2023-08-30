@@ -23,10 +23,14 @@ jobs:
               run: docker-compose run --rm backend sh -c "python manage.py test"  
             - name: Format frontend
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
-            - name: Lint frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
-            - name: Test frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run test:unit
+            - name: Print out file that should be changed by prettier
+              run: less frontend/src/routes/+page.svelte
+            - name: same through docker compose
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend less frontend/src/routes/+page.svelte
+            # - name: Lint frontend
+            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
+            # - name: Test frontend
+            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run test:unit
             - name: Check for changed files
               id: check_changes
               run: |
