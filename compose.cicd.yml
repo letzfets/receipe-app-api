@@ -6,5 +6,5 @@ services:
             target: build
             # args:
             #     - NODE_ENV=test
-        volumes:
-            - ./frontend/src:/app/src
+        # volumes:
+        #     - ./frontend/src:/app/src

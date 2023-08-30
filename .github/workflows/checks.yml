@@ -26,7 +26,7 @@ jobs:
             - name: Print out file that should be changed by prettier
               run: less frontend/src/routes/+page.svelte
             - name: same through docker compose
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la #less frontend/src/routes/+page.svelte
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend less src/routes/+page.svelte
             # - name: Lint frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
             # - name: Test frontend
