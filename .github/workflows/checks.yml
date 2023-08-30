@@ -46,7 +46,9 @@ jobs:
                   else
                       echo "No files changed"
                       echo "changed=false" >> $GITHUB_OUTPUT
-                  fi && git diff
+                  fi
+            - name: Show changed files
+              run: git diff
             - name: Create pull request with changes
               if: steps.check_changes.outputs.changed == 'true'
               uses: peter-evans/create-pull-request@v5

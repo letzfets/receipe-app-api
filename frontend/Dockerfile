@@ -8,6 +8,7 @@ RUN pwd
 RUN ls -la
 RUN npm run prepare && npm run build
 RUN ls -la
+RUN ls -la node_modules
 # CMD ["node", "./build/index.js"]
 
 FROM node:20-alpine
