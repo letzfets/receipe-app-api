@@ -23,21 +23,30 @@ jobs:
               run: docker-compose run --rm backend sh -c "python manage.py test"  
             - name: Format frontend
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
-            # - name: Print directory content
-            #   run: docker-compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "ls -la node_modules/"
-            - name: Print directory name
-              run: pwd
-            - name: Print directory content
-              run: ls -la frontend/
-            # - name: Build frontend
-            #   run: docker build -t frontend:dev --target build .
             # - name: Lint frontend
             #   run: docker run --rm frontend:dev npm run lint
             # - name: Test frontend
             #   run: docker run --rm frontend:dev npm run test:unit
-            # - name: Format frontend
-            #   run: docker-compose run --rm frontend sh -c "npm run format"
-            # - name: Lint frontend
-            #   run: docker-compose run --rm frontend sh -c "npm run lint"
-            # - name: Test frontend
-            #   run: docker-compose run --rm frontend sh -c "npm run test:unit"
+            - name: Check for changed files
+              id: check_changes
+              run: |
+                  if git diff --exit-code ${{ github.sha }}; then
+                      echo "Files changed"
+                      echo "::set-output name=changed::true"
+                  else
+                      echo "No files changed"
+                      echo "::set-output name=changed::false"
+                  fi
+            - name: Create pull request with changes
+              if: steps.check_changes.outputs.changed == 'true'
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  commit-message: "[bot] Format, lint and test"
+                  title: "[bot] Format, lint and test"
+                  body: |
+                      This is an automated pull request to format, lint and test the code.
+                      Please review and merge if no changes are required.
+                  branch: format-lint-test
+                  branch-suffix: timestamp
+                  delete-branch: true
