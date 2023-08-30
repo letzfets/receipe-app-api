@@ -24,9 +24,9 @@ jobs:
             - name: Format frontend
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
             - name: Lint frontend
-              run: docker run --rm frontend:dev npm run lint
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
             - name: Test frontend
-              run: docker run --rm frontend:dev npm run test:unit
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run test:unit
             - name: Check for changed files
               id: check_changes
               run: |
@@ -49,3 +49,4 @@ jobs:
                       Please review and merge if no changes are required.
                   branch: format-lint-test
                   branch-suffix: timestamp
+                  # delete-branch: true
