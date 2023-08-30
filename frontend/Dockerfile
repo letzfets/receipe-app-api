@@ -5,7 +5,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-RUN echo "==================== should show up ===================="
 # CMD ["node", "./build/index.js"]
 
 FROM node:20-alpine
@@ -13,7 +12,6 @@ COPY --from=build /app/build /app/
 COPY --from=build /app/package*.json /app/
 EXPOSE 3000
 USER node
-RUN echo "==================== should NOT show up ===================="
 CMD ["node", "/app/index.js"]
 
 # FROM nginx:1.25.2-alpine AS production
