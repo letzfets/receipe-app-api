@@ -68,7 +68,7 @@ Build the container with `docker build -t frontend --progress=plain .` and run i
 
 ## Starting a service
 ````
-docker-compose -f compose.yml -f compose.dev.tml up -d
+docker-compose -f compose.yml -f compose.dev.yml up -d
 ````
 
 

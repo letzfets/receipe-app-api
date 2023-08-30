@@ -2,7 +2,7 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 # COPY .svelte-kit/ .svelte-kit/
-RUN npm install
+RUN npm install && npm run prepare
 COPY . .
 RUN npm run build
 # CMD ["node", "./build/index.js"]
