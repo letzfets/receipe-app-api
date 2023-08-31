@@ -27,8 +27,10 @@ jobs:
               run: ls -la frontend/
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
+            - name: Build frontend
+              run: docker compose -f compose.yml -f compose.cicd.yml build 
             - name: Show contents of build
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la
+              run: docker compose -f compose.yml run --rm frontend ls -la
             - name: Frontend directory content after build
               run: ls -la frontend/
             # - name: Format frontend
