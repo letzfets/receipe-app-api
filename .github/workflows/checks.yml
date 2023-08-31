@@ -31,7 +31,7 @@ jobs:
               run: ls -la frontend/
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
-            - name: Build project
+            - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             - name: Frontend directory content after build
               run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
@@ -39,12 +39,12 @@ jobs:
               run: docker compose -f compose.yml run --rm frontend ls -la build/
             - name: Show contents of node_modules through docker compose
               run: docker compose -f compose.yml run --rm frontend ls -la node_modules/
-            - name: Format frontend
-              run: docker compose -f compose.yml run --rm frontend npm run format
-            - name: Print out file that should be changed by prettier
-              run: less frontend/src/routes/+page.svelte
-            - name: same through docker compose
-              run: docker compose -f compose.yml run --rm frontend less src/routes/+page.svelte
+            # - name: Format frontend
+            #   run: docker compose -f compose.yml run --rm frontend npm run format
+            # - name: Print out file that should be changed by prettier
+            #   run: less frontend/src/routes/+page.svelte
+            # - name: same through docker compose
+            #   run: docker compose -f compose.yml run --rm frontend less src/routes/+page.svelte
             # - name: Lint frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
             # - name: Test frontend
