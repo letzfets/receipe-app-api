@@ -25,8 +25,8 @@ jobs:
               run: pwd
             - name: Directory content
               run: ls -la
-            - name: Show contents of node_modules
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
+            # - name: Show contents of node_modules
+            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             - name: Show contents of build
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la build/
             # - name: Format frontend
