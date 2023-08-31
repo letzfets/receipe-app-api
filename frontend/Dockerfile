@@ -1,11 +1,9 @@
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY package*.json ./
-# COPY svelte.config.ts ./
-# consider copying svelte.config.ts and other files (e.g. tsconfig.json) already in previous step - as npm install seems to call npm run prepare
+COPY package*.json svelte.config.js ./
 RUN npm install
 COPY . .
-RUN npm run prepare && npm run build
+RUN npm run build
 
 
 FROM node:20-alpine
