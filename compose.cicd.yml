@@ -7,11 +7,11 @@ services:
             # args:
             #     - NODE_ENV=test
         volumes:
-            - ./frontend:/app:rw # basically this file is down to a compose.build.yml now. Rename it - if cicd has other requirements.
+            - ./frontend:/app # basically this file is down to a compose.build.yml now. Rename it - if cicd has other requirements.
             # - /app/node_modules
             # - /app/build
             # - ./frontend/node_modules:/app/node_modules 
-        working_dir:
-            /app
+        # working_dir:
+        #     /app
         # entrypoint:
         #     - /bin/sh

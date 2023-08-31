@@ -32,7 +32,7 @@ jobs:
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             - name: Build frontend
-              run: docker compose -f compose.yml build frontend
+              run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             - name: Build test directory
               run: mkdir test && ls -la
             # - name: npm install to create the node_modules directory in the volume
