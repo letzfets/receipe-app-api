@@ -7,5 +7,5 @@ services:
             # args:
             #     - NODE_ENV=test
         volumes:
-            - ./frontend:/app # basically this file is down to a compose.build.yml now. Rename it - if cicd has other requirements.
+            - ./frontend:/app:rw # basically this file is down to a compose.build.yml now. Rename it - if cicd has other requirements.
             # - ./frontend/node_modules:/app/node_modules
