@@ -5,7 +5,6 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-
 FROM node:20-alpine
 COPY --from=build /app/build /app/
 COPY --from=build /app/package*.json /app/

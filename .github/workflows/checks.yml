@@ -32,7 +32,11 @@ jobs:
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             - name: Build frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml build frontend
+              run: docker compose -f compose.yml build frontend
+            - name: Run frontend
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm -d frontend
+            - name: Execute frontend format
+              run: docker compose -f compose.yml -f compose.cicd.yml exec -it frontend npm install && npm run format
             - name: Frontend directory content after build
               run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
             - name: Home directory content after build
