@@ -4,12 +4,12 @@ COPY package*.json ./
 # COPY .svelte-kit/ .svelte-kit/
 RUN npm install
 COPY . .
-RUN pwd
-RUN ls -la
+# RUN pwd
+# RUN ls -la
 RUN npm run prepare && npm run build
-RUN ls -la
-RUN ls -la node_modules
-RUN ls -la build
+# RUN ls -la
+# RUN ls -la node_modules
+# RUN ls -la build
 # CMD ["node", "./build/index.js"]
 
 FROM node:20-alpine

@@ -27,12 +27,14 @@ jobs:
               run: ls -la frontend/
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
-            - name: Build frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml build 
-            - name: Show contents of build
-              run: docker compose -f compose.yml run --rm frontend ls -la
+            - name: Build project
+              run: docker compose -f compose.yml -f compose.cicd. frontend build 
             - name: Frontend directory content after build
-              run: ls -la frontend/
+              run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
+            - name: Show contents of build through docker compose
+              run: docker compose -f compose.yml run --rm frontend ls -la build/
+            - name: Show contents of node_modules through docker compose
+              run: docker compose -f compose.yml run --rm frontend ls -la node_modules/
             # - name: Format frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run format
             # - name: Print out file that should be changed by prettier
