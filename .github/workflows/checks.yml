@@ -28,7 +28,7 @@ jobs:
             # - name: Show contents of node_modules
             #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             - name: Build project
-              run: docker compose -f compose.yml -f compose.cicd.yml frontend build 
+              run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             - name: Frontend directory content after build
               run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
             - name: Show contents of build through docker compose
