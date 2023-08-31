@@ -21,12 +21,12 @@ jobs:
               run: docker-compose run --rm backend sh -c "flake8"
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
-            - name: Directory path
-              run: pwd
-            - name: Print github workspace variable
-              run: echo $GITHUB_WORKSPACE
-            - name: Print github workspace context
-              run: echo ${{ github.workspace }}
+            # - name: Directory path
+            #   run: pwd
+            # - name: Print github workspace variable
+            #   run: echo $GITHUB_WORKSPACE
+            # - name: Print github workspace context
+            #   run: echo ${{ github.workspace }}
             - name: Frontend directory content before build
               run: ls -la frontend/
             # - name: Show contents of node_modules
@@ -35,6 +35,8 @@ jobs:
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             - name: Frontend directory content after build
               run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
+            - name: Home directory content after build
+              run: ls -la
             - name: Show contents of build through docker compose
               run: docker compose -f compose.yml run --rm frontend ls -la build/
             - name: Show contents of node_modules through docker compose
