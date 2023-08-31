@@ -22,9 +22,11 @@ jobs:
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
             - name: Directory path
-              run: 
+              run: pwd
             - name: Print github workspace variable
               run: echo $GITHUB_WORKSPACE
+            - name: Print github workspace context
+              run: echo ${{ github.workspace }}
             - name: Frontend directory content before build
               run: ls -la frontend/
             # - name: Show contents of node_modules
