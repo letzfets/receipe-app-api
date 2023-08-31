@@ -4,7 +4,7 @@ COPY package*.json svelte.config.js ./
 RUN npm install
 COPY . .
 RUN npm run build
-CMD ["sh" "-c"]
+# CMD ["sh" "-c"]
 
 FROM node:20-alpine
 COPY --from=build /app/build /app/
