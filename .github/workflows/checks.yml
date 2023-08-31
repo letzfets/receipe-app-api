@@ -44,7 +44,7 @@ jobs:
             - name: Home directory content after build
               run: ls -la
             - name: Show contents of build through docker compose
-              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la build/
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la
             - name: Show contents of node_modules through docker compose
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
             # - name: Format frontend
