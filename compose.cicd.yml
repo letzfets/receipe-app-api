@@ -7,5 +7,5 @@ services:
             # args:
             #     - NODE_ENV=test
         volumes:
-            - ./frontend:/app
+            - /home/runner/work/receipe-app-api/receipe-app-api/frontend:/app
             # - ./frontend/node_modules:/app/node_modules
