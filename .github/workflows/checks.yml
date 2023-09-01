@@ -13,7 +13,7 @@ jobs:
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
             # - name: Format backend
-            #   run: docker-compose run --rm backend sh -c "black ."
+            #   run: docker-compose -f compose.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             # - name: Format frontend
@@ -40,9 +40,13 @@ jobs:
                   fi
             # - name: Show changed files
             #   run: git diff --exit-code && echo $?
-            - name: Echo output of check
-              run: echo ${{ steps.check_changes.outputs.changed }}
+            # - name: Echo output of check
+            #   run: echo ${{ steps.check_changes.outputs.changed }}
               # run: echo $GITHUB_OUTPUT
+            # - name: Commit changes
+            #   uses: EndBug/add-and-commit@v9
+            #   with:
+            #     default_author: github_actions
             - name: Create pull request with changes
             # TBD: needs ${{}}?
               if: steps.check_changes.outputs.changed == 'true'
