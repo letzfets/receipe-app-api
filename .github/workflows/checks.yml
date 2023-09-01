@@ -10,12 +10,16 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
-            - name: Format backend
-              run: docker-compose run --rm backend sh -c "black ."
+            # - name: Format backend
+            #   run: docker-compose run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
-            - name: Format frontend
-              run: docker-compose run --rm frontend sh -c "npm run format"
+            # - name: Format frontend
+            #   run: docker-compose run --rm frontend sh -c "npm run format"
+            - name: Run Prettier in Docker
+              run: |
+                  docker run --rm -v ${{ github.workspace }}:/app receipe-app-api-frontend \
+                  sh -c "npm install && npm run format"
             - name: Check for changed files
               id: check_changes
               run: |
@@ -43,8 +47,9 @@ jobs:
                   # delete-branch: true
 
 
-    format-test-lint:
-        name: Test, Format and Lint
+    lint-test:
+      # make dependent on code formating job!
+        name: Lint and test
         runs-on: ubuntu-20.04
         steps:
             - name: Login to Docker Hub
