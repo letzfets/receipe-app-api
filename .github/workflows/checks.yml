@@ -18,6 +18,7 @@ jobs:
             #   run: docker-compose run --rm frontend sh -c "npm run format"
             - name: Run Prettier in Docker
               # run: docker images
+              # it's not really using anything from the docker image - so the build is just useless. could as well run the formating jobs without docker!
               run: |
                   docker run --rm -v ${{ github.workspace }}/frontend:/app receipe-app-api-frontend \
                   sh -c "npm install && npm run format"
@@ -37,6 +38,7 @@ jobs:
             - name: Show changed files
               run: git diff
             - name: Create pull request with changes
+            # TBD: needs ${{}}?
               if: steps.check_changes.outputs.changed == 'true'
               uses: peter-evans/create-pull-request@v5
               with:
