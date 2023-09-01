@@ -37,6 +37,8 @@ jobs:
                   fi
             - name: Show changed files
               run: git diff
+            - name: Echo output of check
+              run: echo ${{ steps.check_changes.outputs.changed }}
             - name: Create pull request with changes
             # TBD: needs ${{}}?
               if: steps.check_changes.outputs.changed == 'true'
