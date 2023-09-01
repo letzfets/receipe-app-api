@@ -13,7 +13,7 @@ jobs:
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
             - name: Format backend
-              run: docker-compose -f compose.yml run --rm backend sh -c "black ."
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             # - name: Format frontend
