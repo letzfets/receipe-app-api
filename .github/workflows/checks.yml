@@ -17,9 +17,10 @@ jobs:
             # - name: Format frontend
             #   run: docker-compose run --rm frontend sh -c "npm run format"
             - name: Run Prettier in Docker
-              run: |
-                  docker run --rm -v ${{ github.workspace }}:/app receipe-app-api-frontend \
-                  sh -c "npm install && npm run format"
+              run: docker images
+              # run: |
+              #     docker run --rm -v ${{ github.workspace }}:/app receipe-app-api-frontend \
+              #     sh -c "npm install && npm run format"
             - name: Check for changed files
               id: check_changes
               run: |
