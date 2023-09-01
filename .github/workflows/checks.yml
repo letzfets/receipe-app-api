@@ -29,17 +29,18 @@ jobs:
             - name: Check for changed files
               id: check_changes
               run: |
-                  if git diff --exit-code ${{ github.sha }}; then
+                  if git diff --exit-code; then
                       echo "Files changed"
                       echo "changed=true" >> $GITHUB_OUTPUT
                   else
                       echo "No files changed"
                       echo "changed=false" >> $GITHUB_OUTPUT
                   fi
-            - name: Show changed files
-              run: git diff --exit-code && echo $?
+            # - name: Show changed files
+            #   run: git diff --exit-code && echo $?
             - name: Echo output of check
               run: echo ${{ steps.check_changes.outputs.changed }}
+              # run: echo $GITHUB_OUTPUT
             - name: Create pull request with changes
             # TBD: needs ${{}}?
               if: steps.check_changes.outputs.changed == 'true'
