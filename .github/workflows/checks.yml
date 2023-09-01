@@ -36,7 +36,7 @@ jobs:
                       echo "changed=false" >> $GITHUB_OUTPUT
                   fi
             - name: Show changed files
-              run: git diff
+              run: git diff --exit-code && echo $?
             - name: Echo output of check
               run: echo ${{ steps.check_changes.outputs.changed }}
             - name: Create pull request with changes
