@@ -12,13 +12,13 @@ jobs:
               uses: actions/checkout@v3
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
-            # - name: Format backend
-            #   run: docker-compose -f compose.yml run --rm backend sh -c "black ."
+            - name: Format backend
+              run: docker-compose -f compose.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             # - name: Format frontend
             #   run: docker-compose run --rm frontend sh -c "npm run format"
-            - name: Run Prettier in Docker
+            - name: Format frontend
               # run: docker images
               # it's not really using anything from the docker image - so the build is just useless. could as well run the formating jobs without docker!
               # run: |
@@ -43,24 +43,24 @@ jobs:
             # - name: Echo output of check
             #   run: echo ${{ steps.check_changes.outputs.changed }}
               # run: echo $GITHUB_OUTPUT
-            # - name: Commit changes
-            #   uses: EndBug/add-and-commit@v9
-            #   with:
-            #     default_author: github_actions
-            - name: Create pull request with changes
-            # TBD: needs ${{}}?
-              if: steps.check_changes.outputs.changed == 'true'
-              uses: peter-evans/create-pull-request@v5
+            - name: Commit changes
+              uses: EndBug/add-and-commit@v9
               with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  commit-message: "[bot] Format code"
-                  title: "[bot] Format code"
-                  body: |
-                      This is an automated pull request to format the code.
-                      Please review and merge if no changes are required.
-                  branch: format-code
-                  branch-suffix: timestamp
-                  # delete-branch: true
+                default_author: github_actions
+            # - name: Create pull request with changes
+            # # TBD: needs ${{}}?
+            #   if: steps.check_changes.outputs.changed == 'true'
+            #   uses: peter-evans/create-pull-request@v5
+            #   with:
+            #       token: ${{ secrets.GITHUB_TOKEN }}
+            #       commit-message: "[bot] Format code"
+            #       title: "[bot] Format code"
+            #       body: |
+            #           This is an automated pull request to format the code.
+            #           Please review and merge if no changes are required.
+            #       branch: format-code
+            #       branch-suffix: timestamp
+            #       delete-branch: true
 
 
     lint-test:
