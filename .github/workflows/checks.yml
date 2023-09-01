@@ -10,6 +10,8 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
+            - name: Build backend
+              run: docker compose -f compose.yml -f compose.cicd.yml build backend
             # - name: Format backend
             #   run: docker-compose run --rm backend sh -c "black ."
             - name: Build frontend
