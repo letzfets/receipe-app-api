@@ -11,11 +11,15 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Build backend
-              run: docker compose -f compose.yml build backend
-            # Still has the permission denied issue: -f compose.cicd.yml
+              run: docker compose -f compose.yml -f compose.cicd.yml build backend
+            # Still has the permission denied issue:
             - name: Format backend
-              run: docker compose -f compose.yml run --rm backend sh -c "pwd && ls -la" 
-              # run: docker compose -f compose.yml run --rm backend sh -c "black ."
+              run: docker compose -f compose.yml run --rm backend sh -c "pwd && ls -la"
+              # run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "black ."
+            - name: Check docker user
+              run: docker compose -f compose.yml -f compose.cicd.yml run backend id
+            - name: check directory permissions
+              run: docker compose -f compose.yml -f compose.cicd.yml run backend ls -l /app
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             # - name: Format frontend
