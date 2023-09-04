@@ -52,9 +52,9 @@ jobs:
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
             - name: Lint frontend
-              run: docker-compose -f compose.yml - f compose.cicd.yml run --rm frontend sh -c "npm run lint"
+              run: docker-compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "npm run lint"
             - name: Test frontend
-              run: docker-compose -f compose.yml - f compose.cicd.yml run --rm frontend sh -c "npm run test:unit"
+              run: docker-compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "npm run test:unit"
             # Add lint frontend and test frontend
             # - name: Build frontend
             #   run: docker compose -f compose.yml -f compose.cicd.yml build frontend
