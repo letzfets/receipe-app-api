@@ -151,3 +151,8 @@ number of tests ran not correct
 - missing `test` prefix for test methods name (those can be used as helper functions in the test file)
 - import error when running test: Is this module globally installed: both `tests`directory and `tests.py` exist in app
 
+## Frontend
+
+[How to Do Test-Driven Development with Svelte and Vitest – A Project-Based Tutorial](https://www.freecodecamp.org/news/how-to-do-test-driven-development-with-svelte-and-vitest/)
+
+configure vitest in `vite.config.js`or override it with `vitest.config.js`
