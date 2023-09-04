@@ -90,5 +90,19 @@ Find actions in [Github Marketplace](https://github.com/marketplace/actions/)
 
 docker-compose is preinstalled in ubuntu!
 
+# Testing:
 
+## Backend
 
+- unittest library
+- django adds: test client, simulate authentication, temporary database
+- django restframework adds: API test client
+
+add `tests.py` (module) OR `tests-directory` (prefix every module with `tests_`).
+Tests directory must contain `__init__.py`
+
+Test database: django creates a specific database for tests (and deletes it after every test)
+
+Test classes:
+- SimpleTestCase (without database)
+- TestCase (database included)
