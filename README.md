@@ -106,3 +106,5 @@ Test database: django creates a specific database for tests (and deletes it afte
 Test classes:
 - SimpleTestCase (without database)
 - TestCase (database included)
+
+prefix test-methods with `test_`
