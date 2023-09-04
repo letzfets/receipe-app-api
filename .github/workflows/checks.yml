@@ -10,37 +10,15 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
-            # - name: Check directory ownership without docker before build
-            #   run: ls -l backend/app
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
-            # - name: Check docker user
-            #   run: docker compose -f compose.yml -f compose.cicd.yml run backend id
-            # - name: Quit running docker
-            #   run: docker compose down backend -v
-            - name: Check directory ownership through docker
-              run: docker compose -f compose.yml -f compose.cicd.yml run backend ls -l /app
-            # - name: Check directory ownership without docker after build
-            #   run: ls -l backend//app
             # Still has the permission denied issue:
             - name: Format backend
-              # run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "pwd && ls -la /app"
-              # run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "pwd && ls -la"
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
-            # - name: Format frontend
-            #   run: docker-compose run --rm frontend sh -c "npm run format"
             - name: Format frontend
-              # run: docker images
-              # it's not really using anything from the docker image - so the build is just useless. could as well run the formating jobs without docker!
-              # run: |
-              #     docker run --rm -v ${{ github.workspace }}/frontend:/app receipe-app-api-frontend \
-              #     sh -c "npm install && npm run format"
               run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "npm install && npm run format"
-              # run: |
-              #   docker run --rm -v ${{ github.workspace }}/frontend:/app receipe-app-api-frontend \
-              #   sh -c "pwd && ls -la"
             - name: Check for changed files
               id: check_changes
               run: |
@@ -51,33 +29,13 @@ jobs:
                     echo "Files changed"
                     echo "changed=true" >> $GITHUB_OUTPUT
                   fi
-            # - name: Show changed files
-            #   run: git diff --exit-code && echo $?
-            # - name: Echo output of check
-            #   run: echo ${{ steps.check_changes.outputs.changed }}
-              # run: echo $GITHUB_OUTPUT
             - name: Commit changes
               uses: EndBug/add-and-commit@v9
               with:
                 default_author: github_actions
-            # - name: Create pull request with changes
-            # # TBD: needs ${{}}?
-            #   if: steps.check_changes.outputs.changed == 'true'
-            #   uses: peter-evans/create-pull-request@v5
-            #   with:
-            #       token: ${{ secrets.GITHUB_TOKEN }}
-            #       commit-message: "[bot] Format code"
-            #       title: "[bot] Format code"
-            #       body: |
-            #           This is an automated pull request to format the code.
-            #           Please review and merge if no changes are required.
-            #       branch: format-code
-            #       branch-suffix: timestamp
-            #       delete-branch: true
 
 
     lint-test:
-      # make dependent on code formating job!
         name: Lint and test
         runs-on: ubuntu-20.04
         needs: code-formating
@@ -89,70 +47,35 @@ jobs:
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v3
-            # - name: Format backend
-            #   run: docker-compose run --rm backend sh -c "black ."
             - name: Lint backend
               run: docker-compose run --rm backend sh -c "flake8"
             - name: Test backend
               run: docker-compose run --rm backend sh -c "python manage.py test"
-            # - name: Directory path
-            #   run: pwd
-            # - name: Print github workspace variable
-            #   run: echo $GITHUB_WORKSPACE
-            # - name: Print github workspace context
-            #   run: echo ${{ github.workspace }}
-            - name: Frontend directory content before build
-              run: ls -la frontend/
-            # - name: Show contents of node_modules
-            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend ls -la node_modules/
-            - name: Build frontend
-              run: docker compose -f compose.yml -f compose.cicd.yml build frontend
-            - name: Build test directory
-              run: mkdir test && ls -la
-            # - name: npm install to create the node_modules directory in the volume
-            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm install
-            # - name: Execute frontend format
-            #   run: docker compose -f compose.yml -f compose.cicd.yml exec -it frontend npm install && npm run format
-            - name: Frontend directory content after build
-              run: ls -la frontend/ # does NOT contain build/ or node_modules/ BUT the directories are there now with docker compose!
-            - name: Home directory content after build
-              run: ls -la
-            - name: Show contents of build through docker compose
-              run: docker compose -f compose.yml run --rm frontend ls -la build/
-            - name: Show contents of node_modules through docker compose
-              run: docker compose -f compose.yml run --rm frontend ls -la node_modules/
-            # - name: Format frontend
-            #   run: docker compose -f compose.yml run --rm frontend npm run format
-            # - name: Print out file that should be changed by prettier
-            #   run: less frontend/src/routes/+page.svelte
-            # - name: same through docker compose
-            #   run: docker compose -f compose.yml run --rm frontend less src/routes/+page.svelte
-            # - name: Lint frontend
-            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run lint
-            # - name: Test frontend
-            #   run: docker compose -f compose.yml -f compose.cicd.yml run --rm frontend npm run test:unit
-            - name: Check for changed files
-              id: check_changes
-              run: |
-                  if git diff --exit-code ${{ github.sha }}; then
-                      echo "Files changed"
-                      echo "changed=true" >> $GITHUB_OUTPUT
-                  else
-                      echo "No files changed"
-                      echo "changed=false" >> $GITHUB_OUTPUT
-                  fi
-            - name: Show changed files
-              run: git diff
-            - name: Create pull request with changes
-              if: steps.check_changes.outputs.changed == 'true'
-              uses: peter-evans/create-pull-request@v5
-              with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  commit-message: "[bot] Format, lint and test"
-                  title: "[bot] Format, lint and test"
-                  body: |
-                      This is an automated pull request to format, lint and test the code.
-                      Please review and merge if no changes are required.
-                  branch: format-lint-test
-                  branch-suffix: timestamp
-                  # delete-branch: true
+            # Add lint frontend and test frontend
+            # - name: Build frontend
+            #   run: docker compose -f compose.yml -f compose.cicd.yml build frontend
+            # - name: Check for changed files
+            #   id: check_changes
+            #   run: |
+            #       if git diff --exit-code ${{ github.sha }}; then
+            #           echo "Files changed"
+            #           echo "changed=true" >> $GITHUB_OUTPUT
+            #       else
+            #           echo "No files changed"
+            #           echo "changed=false" >> $GITHUB_OUTPUT
+            #       fi
+            # - name: Show changed files
+            #   run: git diff
+            # - name: Create pull request with changes
+            #   if: steps.check_changes.outputs.changed == 'true'
+            #   uses: peter-evans/create-pull-request@v5
+            #   with:
+            #       token: ${{ secrets.GITHUB_TOKEN }}
+            #       commit-message: "[bot] Format, lint and test"
+            #       title: "[bot] Format, lint and test"
+            #       body: |
+            #           This is an automated pull request to format, lint and test the code.
+            #           Please review and merge if no changes are required.
+            #       branch: format-lint-test
+            #       branch-suffix: timestamp
+            #       # delete-branch: true
