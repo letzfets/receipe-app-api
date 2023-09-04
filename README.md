@@ -108,3 +108,7 @@ Test classes:
 - TestCase (database included)
 
 prefix test-methods with `test_`
+
+### test driven development:
+
+First write test and then add the development
