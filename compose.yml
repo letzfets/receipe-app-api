@@ -7,12 +7,12 @@ services:
             context: ./backend
             args:
                 - DEV=true
-        ports:
-            - "8000:8000"
+        # ports:
+        #     - "8000:8000"
         volumes:
             - ./backend/app:/app
-        command:
-            sh -c "python manage.py runserver 0.0.0.0:8000"
+        # command:
+        #     sh -c "python manage.py runserver 0.0.0.0:8000"
     
     frontend:
         build:
