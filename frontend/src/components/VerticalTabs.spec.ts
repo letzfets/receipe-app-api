@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import VerticalTabs from './VerticalTabs.svelte'
+import VerticalTabs from './VerticalTabs.svelte';
 
 describe('VerticalTabs Component', () => {
 	it('should render the component', () => {
@@ -10,12 +10,12 @@ describe('VerticalTabs Component', () => {
 		document.body.appendChild(host);
 
 		// create an instance of the vertical tab
-		const instance = new VerticalTabs({ target: host})
+		const instance = new VerticalTabs({ target: host });
 
 		// Check if the instance has a value
-		expect(instance).toBeTruthy()
+		expect(instance).toBeTruthy();
 
 		// Test if we can find the "First Tab Heading"
-		expect(host.innerHTML).toContain('First Tab Heading')
-	})
-})
+		expect(host.innerHTML).toContain('First Tab Heading');
+	});
+});

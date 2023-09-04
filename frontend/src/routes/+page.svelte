@@ -1,5 +1,5 @@
 <script>
-	import VerticalTabs from "../components/VerticalTabs.svelte";
+	import VerticalTabs from '../components/VerticalTabs.svelte';
 
 	const name = 'world';
 

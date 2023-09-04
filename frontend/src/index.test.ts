@@ -6,5 +6,5 @@ describe('calc tests', () => {
 	});
 	it('subtracts 15 -10 to equal 5', () => {
 		expect(15 - 10).toBe(5);
-	})
+	});
 });
