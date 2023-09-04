@@ -10,22 +10,22 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
-            - name: Check directory ownership without docker before build
-              run: ls -l backend/app
+            # - name: Check directory ownership without docker before build
+            #   run: ls -l backend/app
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
             # - name: Check docker user
             #   run: docker compose -f compose.yml -f compose.cicd.yml run backend id
-            - name: Quit running docker
-              run: docker compose down backend -v
+            # - name: Quit running docker
+            #   run: docker compose down backend -v
             - name: Check directory ownership through docker
               run: docker compose -f compose.yml -f compose.cicd.yml run backend ls -l /app
-            - name: Check directory ownership without docker after build
-              run: ls -l backend//app
+            # - name: Check directory ownership without docker after build
+            #   run: ls -l backend//app
             # Still has the permission denied issue:
             - name: Format backend
-              run: docker compose -f compose.yml run --rm backend pwd && ls -la
-              # run: docker compose -f compose.yml run --rm backend sh -c "pwd && ls -la"
+              run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "pwd && ls -la /app"
+              # run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "pwd && ls -la"
               # run: docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
