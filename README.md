@@ -130,3 +130,13 @@ Example:
 Use unittest.mock
 - MagicMock/Mock: replace real objects
 - patch: overrides code for tests
+
+### Testing web requests
+
+Django rest framework API client
+- based on Django's TestClient
+- make requests
+- check result
+- override authentication
+
+`from rest_framework.test import APIClient`
