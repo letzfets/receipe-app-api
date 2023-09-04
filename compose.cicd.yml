@@ -4,7 +4,7 @@ services:
     backend:
         volumes:
             - ./backend/app:/app
-        # user: "1000:1000"
+        user: "1000:1000"
 
     frontend:
         build:
