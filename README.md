@@ -150,3 +150,4 @@ number of tests ran not correct
 - indentation of test cases
 - missing `test` prefix for test methods name (those can be used as helper functions in the test file)
 - import error when running test: Is this module globally installed: both `tests`directory and `tests.py` exist in app
+
