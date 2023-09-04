@@ -14,8 +14,8 @@ jobs:
               run: ls -l backend/app
             - name: Build backend
               run: docker compose -f compose.yml -f compose.cicd.yml build backend
-            - name: Check docker user
-              run: docker compose -f compose.yml -f compose.cicd.yml run backend id
+            # - name: Check docker user
+            #   run: docker compose -f compose.yml -f compose.cicd.yml run backend id
             - name: Check directory ownership through docker
               run: docker compose -f compose.yml -f compose.cicd.yml run backend ls -l /app
             - name: Check directory ownership without docker after build
