@@ -48,6 +48,8 @@ jobs:
             ## TBD: if code is changed in code-formator, the cahnges don't appear here yet.
             - name: Checkout
               uses: actions/checkout@v3
+              with:
+                  ref: main
             - name: Lint backend
               run: docker-compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "flake8"
             - name: Test backend
