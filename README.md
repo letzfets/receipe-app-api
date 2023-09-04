@@ -109,6 +109,24 @@ Test classes:
 
 prefix test-methods with `test_`
 
-### test driven development:
+### Test Driven Development (TDD)
 
 First write test and then add the development
+
+### Mocking
+
+- override or change behavior of dependencies
+- avoid unintended side effects
+- isolate code being tested
+
+benefits:
+- avoid relying on external services: might not available at test time
+- avoid unintended consequences: like sending an email for every test or overloading external servicers in another way
+
+Example: 
+- user registers -> gets welcome email. "Mock" the sending of the email.
+- check database and then sleep for a while
+
+Use unittest.mock
+- MagicMock/Mock: replace real objects
+- patch: overrides code for tests
