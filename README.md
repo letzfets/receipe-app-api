@@ -140,3 +140,13 @@ Django rest framework API client
 - override authentication
 
 `from rest_framework.test import APIClient`
+
+check status code: `self.assertEqual(res.status_code, '200')`
+
+### Common testing problems:
+
+number of tests ran not correct
+- missing __init__.py in tests/ directory
+- indentation of test cases
+- missing `test` prefix for test methods name (those can be used as helper functions in the test file)
+- import error when running test: Is this module globally installed: both `tests`directory and `tests.py` exist in app
