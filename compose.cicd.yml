@@ -1,6 +1,9 @@
 version: "3.9"
 
 services:
+    backend:
+        user: "1000:1000"
+
     frontend:
         build:
             target: build
