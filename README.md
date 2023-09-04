@@ -37,13 +37,16 @@ for unit testing: using django test *suite*
 ````
 docker-compose run --rm backend sh -c "python manage.py test"
 ````
+## Backend
 
-## Creating python project:
+### Creating python project:
 ```
 docker-compose run --rm backend sh -c "django-admin startproject app ."
 ```
 
-## Creating svelte project:
+## Frontend
+
+### Creating svelte project:
 
 First build a node container with only
 ```
@@ -66,7 +69,12 @@ or after `docker-compose -f compose.yml -f compose.dev.tml up -d`: `docker-compo
 
 Build the container with `docker build -t frontend --progress=plain .` and run it with `docker run -p 3000:3000 frontend`
 
-## Starting a service
+### Updating Frontend:
+
+`docker compose -f compose.yml -f compose.cicd.yml run --rm frontend sh -c "npm update"`
+
+
+## Starting the dev environment
 ````
 docker-compose -f compose.yml -f compose.dev.yml up -d
 ````
