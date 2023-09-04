@@ -5,8 +5,8 @@ services:
     # TBD: move dev stuff into docker-compose.dev.yml
         build:
             context: ./backend
-            args:
-                - DEV=true
+            # args:
+            #     - DEV=true
         # ports:
         #     - "8000:8000"
         volumes:
