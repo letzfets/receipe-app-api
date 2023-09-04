@@ -14,7 +14,8 @@ jobs:
               run: docker compose -f compose.yml build backend
             # Still has the permission denied issue: -f compose.cicd.yml
             - name: Format backend
-              run: docker compose -f compose.yml run --rm backend sh -c "black ."
+              run: docker compose -f compose.yml run --rm backend sh -c "pwd && ls -la" 
+              # run: docker compose -f compose.yml run --rm backend sh -c "black ."
             - name: Build frontend
               run: docker compose -f compose.yml -f compose.cicd.yml build frontend
             # - name: Format frontend
