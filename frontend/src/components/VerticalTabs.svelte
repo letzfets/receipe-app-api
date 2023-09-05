@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	let selectedIndex = 0;
 	// const changeSecondTab = () => {
@@ -56,20 +56,20 @@
 			<p>...</p>
 		{/if} -->
 		{#if selectedIndex == 0}
-            <div transition:fly>
-			    <h2>First Tab Heading</h2>
-			    <p>First text ...</p>
-            </div>
+			<div transition:fly>
+				<h2>First Tab Heading</h2>
+				<p>First text ...</p>
+			</div>
 		{:else if selectedIndex == 1}
-            <div transition:fly>
-			    <h2>Second Tab Heading</h2>
-			    <p>Second text ...</p>
-            </div>
+			<div transition:fly>
+				<h2>Second Tab Heading</h2>
+				<p>Second text ...</p>
+			</div>
 		{:else if selectedIndex == 2}
-            <div transition:fly>
-			    <h2>Third Tab Heading</h2>
-			    <p>Third text ...</p>
-            </div>
+			<div transition:fly>
+				<h2>Third Tab Heading</h2>
+				<p>Third text ...</p>
+			</div>
 		{/if}
 	</div>
 </div>
