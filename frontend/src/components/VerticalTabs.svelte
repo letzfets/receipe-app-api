@@ -6,9 +6,6 @@
 	const changeTab = (index: number) => {
 		selectedIndex = index;
 	};
-	const changeTab = (index: number) => {
-		selectedIndex = index;
-	};
 </script>
 
 <div class="vertical-tab-container">
