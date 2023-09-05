@@ -8,9 +8,9 @@ describe('VerticalTabs Component', () => {
 
 		const firstTabHeading = screen.getByText(/First Tab Heading/i);
 
-		expect(firstTabHeading).toBeTruthy();
-	});
-});
+        expect(firstTabHeading).toBeTruthy()
+    })
+})
 
 // describe('VerticalTabs Component', () => {
 // 	it('should render the component', () => {
