@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/svelte'
-import VerticalTabs from './VerticalTabs.svelte'
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/svelte';
+import VerticalTabs from './VerticalTabs.svelte';
 
 describe('VerticalTabs Component', () => {
 	it('should render the component', () => {
@@ -8,18 +8,18 @@ describe('VerticalTabs Component', () => {
 
 		const firstTabHeading = screen.getByText(/First Tab Heading/i);
 
-        expect(firstTabHeading).toBeTruthy()
-    })
-    it('should switch tabs', async () => {
-        render(VerticalTabs)
+		expect(firstTabHeading).toBeTruthy();
+	});
+	it('should switch tabs', async () => {
+		render(VerticalTabs);
 
-        const secondTabLink = screen.getByText(/Second Tab/i)
+		const secondTabLink = screen.getByText(/Second Tab/i);
 
-        fireEvent.click(secondTabLink)
+		fireEvent.click(secondTabLink);
 
-        await screen.findByText(/Second Tab Heading/i)
-    })
-})
+		await screen.findByText(/Second Tab Heading/i);
+	});
+});
 
 // describe('VerticalTabs Component', () => {
 // 	it('should render the component', () => {
