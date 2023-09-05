@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/svelte';
+import { render, screen, fireEvent } from '@testing-library/svelte';
 import VerticalTabs from './VerticalTabs.svelte';
 
 describe('VerticalTabs Component', () => {
@@ -11,7 +11,7 @@ describe('VerticalTabs Component', () => {
 		expect(firstTabHeading).toBeTruthy();
 	});
 	it('should switch tabs', async () => {
-		render(VerticalTabs);
+		//render(VerticalTabs);
 
 		const secondTabLink = screen.getByText(/Second Tab/i);
 
