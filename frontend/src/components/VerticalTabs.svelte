@@ -3,21 +3,18 @@
 	// const changeSecondTab = () => {
 	// 	selectedIndex = 1;
 	// };
-    const changeTab = (index:number) => {
-        selectedIndex = index;
-    }
+	const changeTab = (index: number) => {
+		selectedIndex = index;
+	};
 </script>
 
 <div class="vertical-tab-container">
 	<ul class="vertical-tab">
-		<li class:selected={selectedIndex === 0}
-            on:click={() => changeTab(0)}>First Tab</li>
+		<li class:selected={selectedIndex === 0} on:click={() => changeTab(0)}>First Tab</li>
 		<!-- <li>Second Tab</li> -->
 		<!-- <li on:click={() => changeSecondTab()}>Second Tab</li> -->
-        <li class:selected={selectedIndex === 1}
-            on:click={() => changeTab(1)}>Second Tab</li>
-		<li class:selected={selectedIndex === 2}
-            on:click={() => changeTab(2)}>Third Tab</li>
+		<li class:selected={selectedIndex === 1} on:click={() => changeTab(1)}>Second Tab</li>
+		<li class:selected={selectedIndex === 2} on:click={() => changeTab(2)}>Third Tab</li>
 	</ul>
 
 	<div class="vertical-tab-content">
@@ -38,13 +35,13 @@
 			<h2>Second Tab Heading</h2>
 			<p>...</p>
 		{/if} -->
-        {#if selectedIndex == 0}
+		{#if selectedIndex == 0}
 			<h2>First Tab Heading</h2>
-			<p>First text ... </p>
+			<p>First text ...</p>
 		{:else if selectedIndex == 1}
 			<h2>Second Tab Heading</h2>
 			<p>Second text ...</p>
-        {:else if selectedIndex == 2}
+		{:else if selectedIndex == 2}
 			<h2>Third Tab Heading</h2>
 			<p>Third text ...</p>
 		{/if}
@@ -76,7 +73,7 @@
 		align-items: center;
 	}
 
-    .selected{
-        color: blue;
-    }
+	.selected {
+		color: blue;
+	}
 </style>
