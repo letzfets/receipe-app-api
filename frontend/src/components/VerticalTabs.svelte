@@ -1,16 +1,23 @@
 <script lang="ts">
 	let selectedIndex = 0;
-	const changeSecondTab = () => {
-		selectedIndex = 1;
-	};
+	// const changeSecondTab = () => {
+	// 	selectedIndex = 1;
+	// };
+    const changeTab = (index:number) => {
+        selectedIndex = index;
+    }
 </script>
 
 <div class="vertical-tab-container">
 	<ul class="vertical-tab">
-		<li>First Tab</li>
+		<li class:selected={selectedIndex === 0}
+            on:click={() => changeTab(0)}>First Tab</li>
 		<!-- <li>Second Tab</li> -->
-		<li on:click={() => changeSecondTab()}>Second Tab</li>
-		<li>Third Tab</li>
+		<!-- <li on:click={() => changeSecondTab()}>Second Tab</li> -->
+        <li class:selected={selectedIndex === 1}
+            on:click={() => changeTab(1)}>Second Tab</li>
+		<li class:selected={selectedIndex === 2}
+            on:click={() => changeTab(2)}>Third Tab</li>
 	</ul>
 
 	<div class="vertical-tab-content">
@@ -20,7 +27,7 @@
 			deleniti quos reprehenderit natus. Animi, obcaecati dolorum, culpa, maiores maxime ullam
 			soluta unde rerum nihil temporibus quibusdam!
 		</p> -->
-		{#if selectedIndex == 0}
+		<!-- {#if selectedIndex == 0}
 			<h2>First Tab Heading</h2>
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aut deserunt veniam tempora
@@ -30,6 +37,16 @@
 		{:else if selectedIndex == 1}
 			<h2>Second Tab Heading</h2>
 			<p>...</p>
+		{/if} -->
+        {#if selectedIndex == 0}
+			<h2>First Tab Heading</h2>
+			<p>First text ... </p>
+		{:else if selectedIndex == 1}
+			<h2>Second Tab Heading</h2>
+			<p>Second text ...</p>
+        {:else if selectedIndex == 2}
+			<h2>Third Tab Heading</h2>
+			<p>Third text ...</p>
 		{/if}
 	</div>
 </div>
@@ -58,4 +75,8 @@
 		flex: 1;
 		align-items: center;
 	}
+
+    .selected{
+        color: blue;
+    }
 </style>
