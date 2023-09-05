@@ -1,7 +1,7 @@
 <script>
 	import VerticalTabs from '../components/VerticalTabs.svelte';
 
-	const name = 'world';
+	// const name = 'world';
 
 	// console.log(`Hello ${name}!`);
 </script>

@@ -6,15 +6,36 @@
 	const changeTab = (index: number) => {
 		selectedIndex = index;
 	};
+	const changeTab = (index: number) => {
+		selectedIndex = index;
+	};
 </script>
 
 <div class="vertical-tab-container">
 	<ul class="vertical-tab">
-		<li class:selected={selectedIndex === 0} on:click={() => changeTab(0)}>First Tab</li>
+		<!-- <li class:selected={selectedIndex === 0}
+            on:click={() => changeTab(0)}>First Tab</li> -->
 		<!-- <li>Second Tab</li> -->
 		<!-- <li on:click={() => changeSecondTab()}>Second Tab</li> -->
-		<li class:selected={selectedIndex === 1} on:click={() => changeTab(1)}>Second Tab</li>
-		<li class:selected={selectedIndex === 2} on:click={() => changeTab(2)}>Third Tab</li>
+		<!-- <li class:selected={selectedIndex === 1}
+            on:click={() => changeTab(1)}>Second Tab</li>
+		<li class:selected={selectedIndex === 2}
+            on:click={() => changeTab(2)}>Third Tab</li> -->
+		<li>
+			<button class:selected={selectedIndex === 0} on:click={() => changeTab(0)}>
+				First Tab
+			</button>
+		</li>
+		<li>
+			<button class:selected={selectedIndex === 1} on:click={() => changeTab(1)}>
+				Second Tab
+			</button>
+		</li>
+		<li>
+			<button class:selected={selectedIndex === 2} on:click={() => changeTab(2)}>
+				Third Tab
+			</button>
+		</li>
 	</ul>
 
 	<div class="vertical-tab-content">
