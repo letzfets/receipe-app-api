@@ -156,3 +156,16 @@ number of tests ran not correct
 [How to Do Test-Driven Development with Svelte and Vitest – A Project-Based Tutorial](https://www.freecodecamp.org/news/how-to-do-test-driven-development-with-svelte-and-vitest/)
 
 configure vitest in `vite.config.js`or override it with `vitest.config.js`
+
+# Adding the database:
+
+PostgreSQL
+- popular open source
+- free
+- integrates well with Django
+
+using Docker Compose for configuration,
+- so its defined with project and other developers can also use it
+- persistent data using volumes
+- handles network configuration
+- handles environment variable configuration
