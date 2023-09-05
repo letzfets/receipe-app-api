@@ -1,16 +1,16 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/svelte'
-import VerticalTabs from './VerticalTabs.svelte'
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/svelte';
+import VerticalTabs from './VerticalTabs.svelte';
 
 describe('VerticalTabs Component', () => {
-    it('should render the component', () => {
-        render(VerticalTabs)
+	it('should render the component', () => {
+		render(VerticalTabs);
 
-        const firstTabHeading = screen.getByText(/First Tab Heading/i)
+		const firstTabHeading = screen.getByText(/First Tab Heading/i);
 
-        expect(firstTabHeading).toBeTruthy()
-    })
-})
+		expect(firstTabHeading).toBeTruthy();
+	});
+});
 
 // describe('VerticalTabs Component', () => {
 // 	it('should render the component', () => {
