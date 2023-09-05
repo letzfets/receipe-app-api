@@ -1,26 +1,26 @@
-<!-- <script lang="ts">
+<script lang="ts">
     let selectedIndex = 0;
     const changeSecondTab = () => {
         selectedIndex = 1;
     }
-</script> -->
+</script>
 
 <div class="vertical-tab-container">
 	<ul class="vertical-tab">
 		<li>First Tab</li>
-        <li>Second Tab</li>
-		<!-- <li on:click={() => changeSecondTab()}>Second Tab</li> -->
+        <!-- <li>Second Tab</li> -->
+		<li on:click={() => changeSecondTab()}>Second Tab</li>
 		<li>Third Tab</li>
 	</ul>
 
 	<div class="vertical-tab-content">
-        <h2>First Tab Heading</h2>
+        <!-- <h2>First Tab Heading</h2>
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aut deserunt veniam tempora
 			deleniti quos reprehenderit natus. Animi, obcaecati dolorum, culpa, maiores maxime ullam
 			soluta unde rerum nihil temporibus quibusdam!
-		</p>
-        <!-- {#if selectedIndex == 0}
+		</p> -->
+        {#if selectedIndex == 0}
 		<h2>First Tab Heading</h2>
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aut deserunt veniam tempora
@@ -30,7 +30,7 @@
         {:else if selectedIndex == 1}
         <h2>Second Tab Heading</h2>
 		<p>...</p>
-        {/if} -->
+        {/if}
 	</div>
 </div>
 
