@@ -169,3 +169,12 @@ using Docker Compose for configuration,
 - persistent data using volumes
 - handles network configuration
 - handles environment variable configuration
+
+Architecture:
+- Docker compose adds another service: database
+- backend need to `depends_on` database -> still needs handling of database race condition
+
+Volumes in docker compose:
+- persist data
+- maps directory in container to local machine
+- using a named volume (that is at top)
