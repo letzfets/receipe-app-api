@@ -10,16 +10,16 @@ describe('VerticalTabs Component', () => {
 
 		expect(firstTabHeading).toBeTruthy();
 	});
-	it('should switch tabs', async () => {
-		//render(VerticalTabs);
+    it('should switch tabs', async () => {
+        render(VerticalTabs)
 
-		const secondTabLink = screen.getByText(/Second Tab/i);
+        const secondTabLink = screen.getByText(/Second Tab/i)
 
-		fireEvent.click(secondTabLink);
+        fireEvent.click(secondTabLink)
 
-		await screen.findByText(/Second Tab Heading/i);
-	});
-});
+        await screen.findByText(/Second Tab Heading/i)
+    })
+})
 
 // describe('VerticalTabs Component', () => {
 // 	it('should render the component', () => {
