@@ -13,6 +13,8 @@ services:
             - ./backend/app:/app
         depends_on:
             - db
+        env_file:
+            - ./backend/.env
         # need to start server somewhere - either in Dockerfile or here!
         # command:
         #     sh -c "python manage.py runserver 0.0.0.0:8000"
