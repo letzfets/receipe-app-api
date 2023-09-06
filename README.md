@@ -178,3 +178,43 @@ Volumes in docker compose:
 - persist data
 - maps directory in container to local machine
 - using a named volume (that is at top)
+
+Configuring the database:
+- configure django: how to connect to database
+- install database adaptor dependencies
+- update python requirements to include postgres adaptor
+Django needs to know:
+- database engine
+- hostname / ip of database's host
+- port (usually 5432)
+- database name
+- credentials: username and password
+everything goes into `settings.py` and pull everything from environment variables
+
+environment variables
+- can be easily passed to docker,
+- used in prod and dev
+- single place to configure project
+- easy to do with python
+code to pull environment variables in python `os.environ.get('<var-name>')``
+
+package *psycopg2*: package needed for django to connect to database
+- most popular postgres adaptor for python
+- supported officially by django
+
+installation options for psycopg2:
+- psycopg2-binary, not optimized for production
+- psycopg2, e.g. with pip, compiled from source, needs dependencies but optimizes for machine - but easy with docker
+
+dependencies for psycopg2:
+- c compiler
+- python3-dev
+- libpq-dev
+in alpine called
+- postgresql-client
+- build-base
+- postgresql-dev
+- musl-dev
+
+best practice in docker: clean-up dependencies after install in Dockerfile (keep at minimum and light weight)!
+
