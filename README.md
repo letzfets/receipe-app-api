@@ -222,4 +222,4 @@ Configuring database in django in settings.py file:
 [Reference](https://docs.djangoproject.com/en/4.2/ref/settings/#databases)
 
 Fixing a database race configuration:
-docker compose has `depends_on`, which only waits until service has started, but not yet, that the service is running.
+docker compose has `depends_on`, which only waits until service has started, but not yet, that the service is running. Solution: make Django wait for db, using a custom Django management command.
