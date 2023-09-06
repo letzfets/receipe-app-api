@@ -35,7 +35,7 @@ class CommandTest(SimpleTestCase):
         call_command("wait_for_db")
 
         # checking if the function was called once with the correct database:
-        patched_check.assert_called_once_with(database="default")
+        patched_check.assert_called_once_with(databases="default")
 
     # check database -> wait a few seconds -> check again
     # but in test, we don't want to wait - for not slowing the test down
@@ -61,4 +61,4 @@ class CommandTest(SimpleTestCase):
 
         # checking if the function was called with the correct database
         # but now its called multiple (6) times:
-        patched_check.assert_called_with(database="default")
+        patched_check.assert_called_with(databases="default")
