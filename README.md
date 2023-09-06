@@ -218,3 +218,5 @@ in alpine called
 
 best practice in docker: clean-up dependencies after install in Dockerfile (keep at minimum and light weight)!
 
+Configuring database in django in settings.py file:
+[Reference](https://docs.djangoproject.com/en/4.2/ref/settings/#databases)
