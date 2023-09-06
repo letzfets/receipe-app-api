@@ -44,6 +44,11 @@ docker-compose run --rm backend sh -c "python manage.py test"
 docker-compose run --rm backend sh -c "django-admin startproject app ."
 ```
 
+### Adding a new app to the python project:
+```
+docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "python manage.py startapp <ne app name>"
+```
+
 ## Frontend
 
 ### Creating svelte project:
@@ -223,3 +228,6 @@ Configuring database in django in settings.py file:
 
 Fixing a database race configuration:
 docker compose has `depends_on`, which only waits until service has started, but not yet, that the service is running. Solution: make Django wait for db, using a custom Django management command.
+
+Adding a new python app for awaiting the database:
+`docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "python manage.py startapp core"`
