@@ -220,3 +220,6 @@ best practice in docker: clean-up dependencies after install in Dockerfile (keep
 
 Configuring database in django in settings.py file:
 [Reference](https://docs.djangoproject.com/en/4.2/ref/settings/#databases)
+
+Fixing a database race configuration:
+docker compose has `depends_on`, which only waits until service has started, but not yet, that the service is running.
