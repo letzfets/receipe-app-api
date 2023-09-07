@@ -9,9 +9,9 @@ jobs:
         runs-on: ubuntu-20.04
         # environment: cicd
         env:
-            DB_HOST: ${{ env.cicd.DB_HOST }}
-            DB_NAME: ${{ env.cicd.DB_NAME }}
-            DB_USER: ${{ env.cicd.DB_USER }}
+            DB_HOST: ${{ cicd.DB_HOST }}
+            DB_NAME: ${{ cicd.DB_NAME }}
+            DB_USER: ${{ cicd.DB_USER }}
             DB_PASS: ${{ secrets.DB_PASS }}
         steps:
             - name: Test environment
