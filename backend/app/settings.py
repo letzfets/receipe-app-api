@@ -78,6 +78,7 @@ print("os.environ.get:")
 print(os.environ.get("DB_HOST"))
 print(os.environ.get("DB_NAME"))
 print(os.environ.get("DB_USER"))
+print(os.environ.get("DB_PASS"))
 # print(os.environ) # TBD: delete
 
 DATABASES = {
