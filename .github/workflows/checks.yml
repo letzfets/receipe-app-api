@@ -7,12 +7,12 @@ jobs:
     code-formating:
         name: Code Formating
         runs-on: ubuntu-20.04
-        # environment: cicd
-        env:
-            DB_HOST: ${{ cicd.DB_HOST }}
-            DB_NAME: ${{ cicd.DB_NAME }}
-            DB_USER: ${{ cicd.DB_USER }}
-            DB_PASS: ${{ secrets.DB_PASS }}
+        environment: cicd
+        # env:
+        #     DB_HOST: ${{ cicd.DB_HOST }}
+        #     DB_NAME: ${{ cicd.DB_NAME }}
+        #     DB_USER: ${{ cicd.DB_USER }}
+        #     DB_PASS: ${{ secrets.DB_PASS }}
         steps:
             - name: Test environment
               run: |
