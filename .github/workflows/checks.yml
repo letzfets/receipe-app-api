@@ -8,20 +8,24 @@ jobs:
         name: Code Formating
         runs-on: ubuntu-20.04
         environment: cicd
-        # env:
-        #     DB_HOST: ${{ cicd.DB_HOST }}
-        #     DB_NAME: ${{ cicd.DB_NAME }}
-        #     DB_USER: ${{ cicd.DB_USER }}
-        #     DB_PASS: ${{ secrets.DB_PASS }}
+        env:
+            DB_HOST: ${{ vars.DB_HOST }}
+            DB_NAME: ${{ vars.DB_NAME }}
+            DB_USER: ${{ vars.DB_USER }}
+            DB_PASS: ${{ secrets.DB_PASS }}
         steps:
-            # - name: Entyre environemnt
+            # - name: Entire environment
             #   run: env
             - name: Test environment
               run: |
                 echo "DB_HOST: ${{ vars.DB_HOST }}"
+                echo "DB_HOST: $DB_HOST"
                 echo "DB_NAME: ${{ vars.DB_NAME }}"
+                echo "DB_NAME: $DB_NAME"
                 echo "DB_USER: ${{ vars.DB_USER }}"
+                echo "DB_USER: $DB_USER"
                 echo "DB_PASS: ${{ secrets.DB_PASS }}"
+                echo "DB_PASS: $DB_PASS"
             - name: Checkout
               uses: actions/checkout@v3
             - name: Build backend
@@ -54,6 +58,11 @@ jobs:
         runs-on: ubuntu-20.04
         needs: code-formating
         environment: cicd
+        env:
+            DB_HOST: ${{ vars.DB_HOST }}
+            DB_NAME: ${{ vars.DB_NAME }}
+            DB_USER: ${{ vars.DB_USER }}
+            DB_PASS: ${{ secrets.DB_PASS }}
         steps:
             - name: Test environment
               run: |
