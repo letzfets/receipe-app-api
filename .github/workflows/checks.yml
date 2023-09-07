@@ -65,7 +65,7 @@ jobs:
             - name: Lint backend
               run: docker-compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "flake8"
             - name: Test backend
-              run: docker-compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "echo $DB_NAME && python manage.py test"
+              run: docker-compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "python manage.py test"
               # env:
               #     DB_HOST: ${{ vars.DB_HOST }}
               #     DB_NAME: ${{ vars.DB_NAME }}

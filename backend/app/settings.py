@@ -74,6 +74,11 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+print("os.getenv:")
+print(os.getenv("DB_HOST"))
+print(os.getenv("DB_NAME"))
+print(os.getenv("DB_USER"))
+print("os.environ.get:")
 print(os.environ.get("DB_HOST"))
 print(os.environ.get("DB_NAME"))
 print(os.environ.get("DB_USER"))
