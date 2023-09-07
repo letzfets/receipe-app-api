@@ -80,6 +80,9 @@ print(os.environ.get("DB_NAME"))
 print(os.environ.get("DB_USER"))
 print(os.environ.get("DB_PASS"))
 # print(os.environ) # TBD: delete
+for key, value in os.environ.items():
+    print(f"{key}: {value}")
+    
 
 DATABASES = {
     "default": {
