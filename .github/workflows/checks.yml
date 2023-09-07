@@ -20,9 +20,9 @@ jobs:
                 # echo "DB_NAME: $DB_NAME"
                 # echo "DB_USER: $DB_USER"
                 # echo "DB_PASS: $DB_PASS"
-                echo "DB_HOST: ${{ env.DB_HOST }}"
-                echo "DB_NAME: ${{ env.DB_NAME }}"
-                echo "DB_USER: ${{ env.DB_USER }}"
+                echo "DB_HOST: ${{ env.cicd.DB_HOST }}"
+                echo "DB_NAME: ${{ env.cicd.DB_NAME }}"
+                echo "DB_USER: ${{ env.cicd.DB_USER }}"
                 echo "DB_PASS: ${{ secrets.DB_PASS }}"
             - name: Checkout
               uses: actions/checkout@v3
