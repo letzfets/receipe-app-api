@@ -74,14 +74,14 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-print("os.environ.get:")
-print(os.environ.get("DB_HOST"))
-print(os.environ.get("DB_NAME"))
-print(os.environ.get("DB_USER"))
-print(os.environ.get("DB_PASS"))
-# print(os.environ) # TBD: delete
-for key, value in os.environ.items():
-    print(f"{key}: {value}")
+# print("os.environ.get:")
+# print(os.environ.get("DB_HOST"))
+# print(os.environ.get("DB_NAME"))
+# print(os.environ.get("DB_USER"))
+# print(os.environ.get("DB_PASS"))
+# # print(os.environ) # TBD: delete
+# for key, value in os.environ.items():
+#     print(f"{key}: {value}")
 
 
 DATABASES = {
