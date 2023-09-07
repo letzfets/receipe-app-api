@@ -14,8 +14,8 @@ services:
         depends_on:
             - db
         # need to start server somewhere - either in Dockerfile or here!
-        command:
-            sh -c "python manage.py runserver 0.0.0.0:8000"
+        # command:
+        #     sh -c  "python manage.py runserver 0.0.0.0:8000"
     
     db:
         image: postgres:13-alpine
