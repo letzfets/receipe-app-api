@@ -175,7 +175,7 @@ using Docker Compose for configuration,
 - handles network configuration
 - handles environment variable configuration
 
-Architecture:
+## Architecture:
 - Docker compose adds another service: database
 - backend need to `depends_on` database -> still needs handling of database race condition
 
@@ -184,7 +184,7 @@ Volumes in docker compose:
 - maps directory in container to local machine
 - using a named volume (that is at top)
 
-Configuring the database:
+## Configuring the database:
 - configure django: how to connect to database
 - install database adaptor dependencies
 - update python requirements to include postgres adaptor
@@ -203,6 +203,8 @@ environment variables
 - easy to do with python
 code to pull environment variables in python `os.environ.get('<var-name>')``
 
+
+## Database postgresql adaptor
 package *psycopg2*: package needed for django to connect to database
 - most popular postgres adaptor for python
 - supported officially by django
@@ -223,11 +225,57 @@ in alpine called
 
 best practice in docker: clean-up dependencies after install in Dockerfile (keep at minimum and light weight)!
 
+## Database configuration
 Configuring database in django in settings.py file:
 [Reference](https://docs.djangoproject.com/en/4.2/ref/settings/#databases)
 
-Fixing a database race configuration:
+## Fixing a database race configuration
 docker compose has `depends_on`, which only waits until service has started, but not yet, that the service is running. Solution: make Django wait for db, using a custom Django management command.
 
 Adding a new python app for awaiting the database:
 `docker compose -f compose.yml -f compose.cicd.yml run --rm backend sh -c "python manage.py startapp core"`
+
+## Database migrations
+
+### Django Object Relational Mapper (ORM)
+
+is an *abstraction layer for data* to let django handle databse structure and changes.
+- Handles table generation, adding columns, and so on.
+- also allows to switch databases (within reason): for example switching from postgres to mySQL
+
+### Using the **Object Relational Mapper**:
+- define models (done through programming)
+- generate migration file (handled by ORM automatically)
+- setup the database (handled by ORM automatically)
+- store data (handled by ORM automatically)
+
+### Models:
+
+each model
+- maps to a table
+- contains
+    - name
+    - fields (represent columns)
+    - metadata (relationships between tables)
+    - custom python logic (e.g. execute code on every safe or validation)
+
+Model example:
+```
+class ingredient (`models.Model`):
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+```
+
+### Migrations
+enable app in `settings.py` and run through `python manage.py makemigrations`:
+- checks existing database
+- looks for differences of models
+- adds new migrations
+- at first time running: initial setup of database
+
+afterwards apply the migrations to database by running `python manage.py migrate`
+Always run the migration after `wait_for_database`
+
