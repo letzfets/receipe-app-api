@@ -5,12 +5,12 @@ services:
         ports:
             - "8000:8000"
         command:
-            sh -c "python manage.py runserver 0.0.0.0:8000"
+            # sh -c "python manage.py runserver 0.0.0.0:8000"
             # sh -c  "python manage.py wait_for_db &&
             #         python manage.py runserver 0.0.0.0:8000"
-            # sh -c  "python manage.py wait_for_db &&
-            #         python manage.py migrate &&
-            #         python manage.py runserver 0.0.0.0:8000"
+            sh -c  "python manage.py wait_for_db &&
+                    python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000"
             # python manage.py wait_for_db &&
         env_file:
             - ./backend/.env
@@ -18,8 +18,8 @@ services:
     db:
         volumes:
             - dev-db-data:/var/lib/postgresql/data/
-        # env_file:
-        #     - ./backend/.env
+        env_file:
+            - ./backend/.env
         # command:
         #     sh -c "env"
         # environment:
