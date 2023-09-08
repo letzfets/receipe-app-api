@@ -15,8 +15,10 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """Create, save, and return a new user"""
         user = self.model(email=email, **extra_fields)
-        user.set_password(password)  # responsible for the hashing of the password
-        user.save(using=self._db)  # in case multiple databases are used
+        # responsible for the hashing of the password:
+        user.set_password(password)
+        # in case multiple databases are used:
+        user.save(using=self._db)
 
         return user
 
