@@ -279,3 +279,46 @@ enable app in `settings.py` and run through `python manage.py makemigrations`:
 afterwards apply the migrations to database by running `python manage.py migrate`
 Always run the migration after `wait_for_database`
 
+# Create Django User model
+
+Using default django user model. Django has built in **user authentication**
+
+Framework for basic features:
+- registration
+- login
+- auth
+
+Integrates with Django admin
+
+Default Django user model i sfoundation of django auth system
+
+Default user model
+- uses username instead of email
+- not easy to customize
+
+Therefore create a custom user model 
+based on `AbstractBaseUser` and `PermissionMixin`
+
+Create custom manager used for CLI integration
+
+Afterwards set AUTH_USER_MODEL in settings.py
+
+Create and run migrations
+
+**AbstractBaseUser**
+Provides features for authentication but does not include fields.
+
+**PermissionsMixin**
+
+Support for Django permission system
+
+Includes fields and methods
+
+**Common issue**
+
+- Running migrations before setting custom model: not good. Therefore clear them!
+ALWAYS set user model first before running migrations.
+- Typos in config
+- Indentation in manager or model
+
+
