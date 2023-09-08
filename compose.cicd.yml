@@ -10,9 +10,12 @@ services:
             - DB_NAME=$DB_NAME
             - DB_USER=$DB_USER
             - DB_PASS=$DB_PASS
-            # - POSTGRES_DB=$DB_NAME
-            # - POSTGRES_USER=$DB_USER
-            # - POSTGRES_PASSWORD=$DB_PASS
+
+    db:
+        environment:
+            - POSTGRES_DB=$DB_NAME
+            - POSTGRES_USER=$DB_USER
+            - POSTGRES_PASSWORD=$DB_PASS
 
     frontend:
         build:
