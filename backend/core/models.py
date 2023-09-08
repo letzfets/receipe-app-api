@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         """Create, save, and return a new user"""
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=self.normalize_email(email), **extra_fields)
         # responsible for the hashing of the password:
         user.set_password(password)
         # in case multiple databases are used:
