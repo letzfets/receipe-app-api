@@ -23,10 +23,15 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+<<<<<<< HEAD
 
     def create_superuser(self, email, password, **extra_fields):
+=======
+    
+    def create_superuser(self, email, password):
+>>>>>>> b23181c (fix: fixes arguments for superuser)
         """Create and save a new superuser"""
-        user = self.create_user(email, password, **extra_fields)
+        user = self.create_user(email, password)
         # is_superuser is created by PermissionsMixin:
         user.is_superuser = True
         user.is_staff = True

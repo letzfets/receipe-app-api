@@ -365,3 +365,8 @@ docker volume rm receipe-app-api_dev-db-data
 After clearing the database, it works:
 `docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py wait_for_db && python manage.py migrate"`
 
+## Creating super user
+
+in command line:
+
+`docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py createsuperuser"`
