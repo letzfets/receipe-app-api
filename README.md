@@ -352,4 +352,16 @@ BaseUserManager
  Make migrations:
  `docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py makemigrations"`
 
- 
+ Apply migrations:
+ `docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py wait_for_db && python manage.py migrate"`
+=> fails, as migrations ran previously with standard Django user model.
+
+ Therefore clearing data for database:
+```
+docker compose down
+docker volume rm receipe-app-api_dev-db-data
+```
+
+After clearing the database, it works:
+`docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py wait_for_db && python manage.py migrate"`
+
