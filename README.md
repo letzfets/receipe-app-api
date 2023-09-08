@@ -321,4 +321,27 @@ ALWAYS set user model first before running migrations.
 - Typos in config
 - Indentation in manager or model
 
+## Design custom user model
+
+user fields:
+- email (EmailField)
+- name (CharField)
+- is_active (BooleanField)
+- is_staff (BooleanField) -> if true, allows login to django admin
+
+user model manager:
+- used to manage objects
+- custom logic for creating objects
+    - hash passwords
+- used by Django CLI
+    - create superuser
+
+
+BaseUserManager
+- base class for managing users
+- useful helper methods
+    - `normalize_email` for storing emails consistently
+- Methods to define:
+    - `create_user` called when creating user
+    - `create_superuser`used by CLI to create a superuser (=admin)
 
