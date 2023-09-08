@@ -8,16 +8,18 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+
 class UserManager(BaseUserManager):
     """Manager for users"""
 
     def create_user(self, email, password=None, **extra_fields):
         """Create, save, and return a new user"""
         user = self.model(email=email, **extra_fields)
-        user.set_password(password)# responsible for the hashing of the password 
-        user.save(using=self._db)# in case multiple databases are used
+        user.set_password(password)  # responsible for the hashing of the password
+        user.save(using=self._db)  # in case multiple databases are used
 
         return user
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     """user in the system"""
