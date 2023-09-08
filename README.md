@@ -345,3 +345,11 @@ BaseUserManager
     - `create_user` called when creating user
     - `create_superuser`used by CLI to create a superuser (=admin)
 
+## Implement User model
+ 
+ in `core/models.py`
+
+ Make migrations:
+ `docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py makemigrations"`
+
+ 
