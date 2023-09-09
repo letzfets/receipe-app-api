@@ -370,3 +370,24 @@ After clearing the database, it works:
 in command line:
 
 `docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py createsuperuser"`
+
+# Setup Django Admin
+
+- Graphical User Interface for models
+    - Create, Read, Update, Delete (CRUD)
+- very little coding required
+- needs to be enabled per model in `admin.py`
+    - `admin.site.register(<model>)``
+
+Customizing:
+- through class based of `ModelAdmin` or `UserAdmin`
+- override/ set class variables
+- Changing list of objects
+    - `ordering`: changing order of items appearance
+    - `list_display`: fields to appear in list
+- add/update page:
+    - `fieldsets` control layout of page
+    - `readonly_fields`
+- add page:
+    - `add_fieldsets`: fields displayed only on add page
+
