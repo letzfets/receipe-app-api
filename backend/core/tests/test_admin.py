@@ -16,8 +16,7 @@ class AdminSiteTests(TestCase):
         self.client = Client()
         # create a superuser
         self.admin_user = get_user_model().objects.create_superuser(
-            email="admin@example.com",
-            password="test123"
+            email="admin@example.com", password="test123"
         )
         # login with the superuser
         self.client.force_login(self.admin_user)
@@ -26,7 +25,7 @@ class AdminSiteTests(TestCase):
             password="test123",
             name="Test user",
         )
-    
+
     def test_users_list(self):
         """Test that users are listed on user page."""
         # generate url for list user page
