@@ -391,3 +391,6 @@ Customizing:
 - add page:
     - `add_fieldsets`: fields displayed only on add page
 
+# Structuring the frontend
+
+[Understanding the structure of a SvelteKit project](https://www.inow.dev/understanding-the-structure-of-a-svelte-kit-project/)
