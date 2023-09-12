@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getUser } from '$lib/backend/user';
+import { getUser } from '$lib/backend';
 
 // TBD: write test for this function
 export const load = async () => {
