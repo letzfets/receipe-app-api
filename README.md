@@ -394,3 +394,66 @@ Customizing:
 # Structuring the frontend
 
 [Understanding the structure of a SvelteKit project](https://www.inow.dev/understanding-the-structure-of-a-svelte-kit-project/)
+
+# API documentation
+
+## Importance of API documentation
+
+Purpose:
+- designed for developers
+- developers need to know how to use it
+- API is only as good as its documentation
+
+What to document:
+- everything needed to use the API
+- available endpoints
+- supported methods, like
+    - `GET`
+    - `POST`
+    - `PUT`
+    - `PATCH`
+    - `DELETE`
+- Format of payloads (input)
+    - parameters (f.x. filtering)
+    - Post JSON format
+- Format of responses (outputs)
+    - Response JSON format
+- Authentication process
+
+Options for documentation:
+- Manual: (drawback: manual updates & risk of not updated documenting)
+    - word document
+    - markdown
+- automated
+    - use metadata from code (comments)
+    - generate documentation pages
+
+Here:
+- Tools for making documentation seamless
+- Add documentation for our API, including graphical interface to run tests
+
+## Auto docs with Django REST framework (DRF)
+
+Docs in DRF
+- auto generate docs (with third party library)
+    - many tools available
+    - here `drf-spectacular`
+- generates a *schema*
+- which allows a browsable web interface
+    - can make test requests
+    - handle auth
+
+How it works:
+1. Generate `schema` file
+2. Parse schema in GUI
+
+### OpenAPI Schema
+
+- standard for describing APIs
+- popular in industry
+- supported by most API documentation tools - here using Swagger
+- uses popular formats: YAML/JSON
+
+### Using a schema
+- download and run in local or public Swagger instance
+- serve swagger with API (makes it interactive)
