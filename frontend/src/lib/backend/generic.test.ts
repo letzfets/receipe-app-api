@@ -12,7 +12,7 @@ afterEach(() => server.resetHandlers());
 describe('Tests for generic backend functions', () => {
 	it.todo('should wait for backend', async () => {
 		server.use(
-			rest.get('https://backend/health', (req, res, ctx) => {
+			rest.get('https://backend/', (req, res, ctx) => {
 				return res(ctx.status(200), ctx.delay(2000));
 			})
 		);
