@@ -143,13 +143,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "core.User"
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Recipe API',
-    'DESCRIPTION': 'Learning Django REST Framework',
-    'VERSION': '1.0.0',
+    "TITLE": "Recipe API",
+    "DESCRIPTION": "Learning Django REST Framework",
+    "VERSION": "1.0.0",
     # 'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
