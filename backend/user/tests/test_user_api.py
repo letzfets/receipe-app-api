@@ -23,6 +23,7 @@ def create_user(**params):
 # - Private tests require a user login
 # Two different test classes for public and private
 
+
 class PublicUserAPITests(TestCase):
     """Test the public features of users API."""
 
@@ -47,7 +48,7 @@ class PublicUserAPITests(TestCase):
         # Assert that the password is not returned in the response:
         self.assertNotIn("password", res.data)
 
-    def test_create_user_error(self):
+    def test_user_already_exists(self):
         """Test error returned if user with email exists."""
         payload = {
             "email": "test@example.com",
@@ -56,13 +57,13 @@ class PublicUserAPITests(TestCase):
         }
         create_user(**payload)
 
-        res.self.client.post(CREATE_USER_URL, payload)
+        res = self.client.post(CREATE_USER_URL, payload)
 
         # Assert that the response status code is 400:
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
-    
+
     def test_password_too_short(self):
-        """Test that error is returned if password is less than 5 characters."""
+        """Test that error is returned if password is less than 5 characters"""
         payload = {
             "email": "test@example.com",
             "password": "pw",
@@ -71,7 +72,5 @@ class PublicUserAPITests(TestCase):
         res = self.client.post(CREATE_USER_URL, payload)
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
-        user_exists = get_user_model().objects.filter(
-            email=payload["email"]
-        ).exists()
+        user_exists = get_user_model().objects.filter(email=payload["email"]).exists()
         self.assertFalse(user_exists)
