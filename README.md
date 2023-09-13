@@ -475,3 +475,18 @@ Endpoints:
 - `user/me`
     - `GET` to view profile
     - `PUT/PATCH` update user profile
+
+## Creating user app
+
+`docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py startapp user"`
+
+remove directory
+- migrations
+and files:
+- admin.py
+- models.py
+as all of this is managed in core app
+
+and also remove
+- tests.py
+and use subdirectory for tests instead
