@@ -290,7 +290,7 @@ Framework for basic features:
 
 Integrates with Django admin
 
-Default Django user model i sfoundation of django auth system
+Default Django user model is foundation of django auth system
 
 Default user model
 - uses username instead of email
