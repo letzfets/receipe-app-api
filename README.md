@@ -457,3 +457,21 @@ How it works:
 ### Using a schema
 - download and run in local or public Swagger instance
 - serve swagger with API (makes it interactive)
+
+# Build user API
+
+## User API design
+
+Functionality:
+- User registration
+- creating an auth token
+- viewing and updating user profile
+
+Endpoints:
+- `user/create`
+    - `POST` register new user
+- `user/token`
+    - `POST` create a new token: payload contains username and password, returns token
+- `user/me`
+    - `GET` to view profile
+    - `PUT/PATCH` update user profile
