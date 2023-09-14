@@ -490,3 +490,22 @@ as all of this is managed in core app
 and also remove
 - tests.py
 and use subdirectory for tests instead
+
+## Authentication
+
+Types of Authentication:
+- Basic (basic HTTP authentication: username + password with every request) => bad, because client needs to store username and password
+- Token (generate a token from username and password and send that token with every request made to the backend)
+- JSON Web Token (JWT): 
+    - similar to token authentication
+    - use an access and refresh token
+        - (only refresh token needs user authorization)
+        - especially relevant for systems with millions of users to reduce the number of authorization requests
+- session authorization
+    - use cookies (common way to use authentication)
+
+Here: using *token authentication* due to
+- balance between simplicity and security
+- supported out of the box by Django REST framework
+- well supported by most clients
+- only required to store token on disk or in memory
