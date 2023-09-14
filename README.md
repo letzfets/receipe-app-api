@@ -493,7 +493,8 @@ and use subdirectory for tests instead
 
 ## Authentication
 
-Types of Authentication:
+### Types of Authentication:
+
 - Basic (basic HTTP authentication: username + password with every request) => bad, because client needs to store username and password
 - Token (generate a token from username and password and send that token with every request made to the backend)
 - JSON Web Token (JWT): 
@@ -509,3 +510,44 @@ Here: using *token authentication* due to
 - supported out of the box by Django REST framework
 - well supported by most clients
 - only required to store token on disk or in memory
+
+### How token authentication works
+
+- create a token from endpoint (that accepts username+password, creates a new token in database and returns that token to client)
+- client stores token in 
+    - session storage
+    - local storage
+    - cookie
+    - client side database (for desktop applications)
+- client includes token in HTTP headers
+
+### Pros of token authentication
+
+- supported out of the box by django REST framework
+- simple to use
+- supported by all clients (as long as client can store the token)
+- avoid sending username / password each time
+
+### Cons of token authentication
+
+- token needs to be secure on client
+- requires a database for requests
+
+
+### logging out
+
+- happens entirely on client side
+- simply delete token
+
+Why don't we have a logout API?
+- unreliable: no guarantee, that the user can reach the logout API
+    - loosing internet connection
+    - clearing session
+    - uninstalling client side mobile app
+
+*Probably session authentication are more useful moving forward, as token authentication is stateless. Token authentication is useful for registering app's to API's but not for user session handling.*
+
+see
+- [Session vs. Token based authentication](https://stackoverflow.com/questions/40200413/sessions-vs-token-based-authentication)
+- [Session Authentication vs. Token Authentication](https://security.stackexchange.com/questions/81756/session-authentication-vs-token-authentication?newreg=46b4a59e845d440ba4c5d7094e4f2342)
+
