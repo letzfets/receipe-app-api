@@ -44,6 +44,26 @@ class UserSerializer(serializers.ModelSerializer):
         """Create and return a new user with encrypted password."""
         return get_user_model().objects.create_user(**validated_data)
 
+    # Overrides standard behavior of Serializer's update() function
+    def update(self, instance, validated_data):
+        """Update a user, setting the password correctly and return it."""
+        # pop() removes password from validated_data and
+        # returns it as a variable
+        # get() would leave it in validated_data
+        password = validated_data.pop("password", None)
+        # super() calls the ModelSerializer's update() function
+        # and passes the instance and validated_data to it
+        # so here we are calling the function, that we are overriding
+        user = super().update(instance, validated_data)
+        # if password was provided, set it using Django's
+        # then the pop() function above is not None
+        # set_password() function
+        if password:
+            user.set_password(password)
+            user.save()
+        # needs to return the user in case the view needs it later
+        return user
+
 
 class AuthTokenSerializer(serializers.Serializer):
     """Serializer for user auth token."""
