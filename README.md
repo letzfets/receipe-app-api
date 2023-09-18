@@ -559,3 +559,10 @@ For session authentication this would be the cookie instead.
 
 - `PUT` replaces the entire object
 - `PATCH` only updates specific fields
+
+# Adding Tailwind Elements as Frontend UI framework
+
+Install following
+[Tailwind CSS installation](https://tailwindcss.com/docs/guides/sveltekit)
+and add
+[Tailwind Elements installation](https://tailwind-elements.com/docs/standard/integrations/svelte-integration/)
