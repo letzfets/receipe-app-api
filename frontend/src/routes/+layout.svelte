@@ -1,8 +1,9 @@
 <script>
+	import NavButton from '$components/NavButton.svelte';
 	import '../app.css';
 </script>
 
-<nav class="p-2 space-x-4">
+<!-- <nav class="p-2 space-x-4">
 	<a href="/">
 		<button
 			type="button"
@@ -14,6 +15,13 @@
 	<a href="/playground">Playground</a>
 	<a href="/recipe">Recipe</a>
 	<a href="/user">User</a>
+</nav> -->
+
+<nav class="p-2 space-x-4">
+	<NavButton url="/" link="Home" />
+	<NavButton url="/playground" link="Playground" />
+	<NavButton url="/recipe" link="Recipe" />
+	<NavButton url="/user" link="User" />
 </nav>
 
 <slot />
