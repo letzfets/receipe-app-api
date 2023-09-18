@@ -556,3 +556,6 @@ see
 Using a registered user (can be registered through `POST` to `/api/user/create/`) retrieving a token from `POST` request to `/api/user/token/` gives token. In frontend app save this token somewhere (localstorage) and resend, whenever necessary to access API. Then click the `Authorize` in SwaggerAPI and use under tokenAuth. Use `Token ` before the token and mind the space in between the word *Token* and the the actual token.
 
 For session authentication this would be the cookie instead.
+
+- `PUT` replaces the entire object
+- `PATCH` only updates specific fields
