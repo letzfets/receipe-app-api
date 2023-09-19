@@ -34,7 +34,7 @@
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
 			{#if !$login}
-				<NavButton url="/register" link="Register" invert/>
+				<NavButton url="/register" link="Register" invert />
 				<NavButton url="/login" link="Login" />
 			{:else}
 				<UserButton />
