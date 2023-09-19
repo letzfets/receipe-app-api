@@ -1,5 +1,15 @@
 <script lang="ts">
-	import VerticalTabs from '$components/VerticalTabs.svelte';
+	export const linkLayout =
+		'text-xl text-blue-400 transition duration-150 ease-in-out hover:text-neutral-600 focus:text-neutral-700 active:text-neutral-300';
 </script>
 
-<VerticalTabs />
+<div class="mx-5">
+	<ul>
+		<li>
+			<a href="./playground/components" class={linkLayout}> Components </a>
+		</li>
+		<li>
+			<a href="./playground/backend" class={linkLayout}> Backend </a>
+		</li>
+	</ul>
+</div>

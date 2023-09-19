@@ -1,5 +1,6 @@
 import { getBackend } from '$lib/backend';
 
+// TBD: add type PageServerLoad here?
 export const load = async () => {
 	const schema = await getBackend('/api/schema?format=json');
 	return schema;
