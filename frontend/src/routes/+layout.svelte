@@ -34,10 +34,12 @@
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
 			{#if !$login}
-				<NavButton url="/register" link="Register" invert="true" />
+				<NavButton url="/register" link="Register" invert/>
 				<NavButton url="/login" link="Login" />
 			{:else}
 				<UserButton />
+				<!-- might just redirect to /home and delete session information -->
+				<NavButton url="/logout" link="Logout" />
 			{/if}
 		</div>
 	</div>
