@@ -1,4 +1,4 @@
-<h1 class="text-xl text-center">
-	Welcome to SvelteKit - prepared setup for frontend for receipe app
+<h1 class="m-5 text-3xl text-primary text-center">
+	SvelteKit Frontend for a Django REST API
 </h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
