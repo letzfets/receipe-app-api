@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { parse, stringify } from 'postcss';
-
 	// /** @type {import('./$types').PageData} */
 	import type { PageData } from './$types';
 	export let data: PageData;
