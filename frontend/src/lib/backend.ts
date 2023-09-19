@@ -1,8 +1,10 @@
 // handle the backend API calls
 
+const host = 'http://host.docker.internal:8000';
+
 //TBD: GET from backend
 export const getBackend = async (url: string) => {
-	const response = await fetch(url);
+	const response = await fetch(host + url);
 	// console.log(response);
 	// return response;
 	const data = await response.json();

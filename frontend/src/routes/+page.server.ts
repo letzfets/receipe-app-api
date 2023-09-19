@@ -1,7 +1,7 @@
 import { getBackend } from '$lib/backend';
 
 export const load = async () => {
-	const schema = await getBackend('http://host.docker.internal:8000/api/schema?format=json');
+	const schema = await getBackend('/api/schema?format=json');
 	// console.log(data);
 	return schema;
 	// return {
