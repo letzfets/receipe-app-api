@@ -2,7 +2,6 @@
 	// /** @type {import('./$types').PageData} */
 	import type { PageData } from './$types';
 	export let data: PageData;
-	// console.log(data.Response)
 </script>
 
 <h1 class="text-xl text-center">
