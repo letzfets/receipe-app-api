@@ -13,10 +13,7 @@
 </script>
 
 <a href={url}>
-	<button
-		type="button"
-		class={formatButton()}
-	>
+	<button type="button" class={formatButton()}>
 		{link}
 	</button>
 </a>
