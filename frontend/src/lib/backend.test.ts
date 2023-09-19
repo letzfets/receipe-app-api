@@ -7,7 +7,8 @@ import { getBackend } from './backend';
 const dummyResponse = { data: 'test' };
 
 const server = setupServer(
-	rest.get('http://host.docker.internal:8000/api/schema?format=json', (req, res, ctx) => {
+	rest.get('http://host.docker.internal:8000/api/schema', (req, res, ctx) => {
+		req.url.searchParams.set('format', 'json');
 		return res(ctx.json(dummyResponse));
 	})
 );
