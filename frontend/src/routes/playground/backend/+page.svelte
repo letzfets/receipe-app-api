@@ -10,4 +10,4 @@
 	</h1>
 </div>
 
-<code>{JSON.stringify(data)}</code>
+<code><pre>{JSON.stringify(data, null, " ")}</pre></code>
