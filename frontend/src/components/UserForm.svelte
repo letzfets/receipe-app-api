@@ -4,35 +4,41 @@
     // import { Input, Ripple, initTE } from 'tw-elements';
     // initTE({ Input, Ripple })
 
-    
-
-    // import { browser } from '$app/environment';
-    import { onMount, afterUpdate } from 'svelte';
-    export let mounted:Boolean = false
+    import { onMount } from 'svelte';
     onMount(async () => {
-    //afterUpdate(async () => { 
-        // if (browser) {
-            mounted = true
-            console.log('onMount callback')
-            const te = await import('tw-elements');
-            te.initTE({ Input: te.Input, Ripple: te.Ripple })
-            // let nameField = new te.Input(document.getElementById('nameField'))
-            // let emailField = new te.Input(document.getElementById('emailField'))
-            // let passwordField = new te.Input(document.getElementById('passwordField'))
-        // }
-    });
-    // beforeNavigate(() => {
-    //     mounted = false
-    // })
-    import { invalidate, beforeNavigate } from '$app/navigation';
+        const nameField = document.getElementById('nameField')//document.querySelectorAll('[data-te-input-wrapper-init]');
+        //nameField?.removeAttribute('data-te-input-notch-ref')
+        const te = await import('tw-elements');
+        te.initTE({ Input: te.Input, Ripple: te.Ripple })
+    })
 
-    // console.log($navigation)
-    beforeNavigate(
-        () => { 
-            mounted = false
-            console.log('beforeNavigate callback')
-        }
-    )
+    // // import { browser } from '$app/environment';
+    // import { onMount, afterUpdate } from 'svelte';
+    // export let mounted:Boolean = false
+    // onMount(async () => {
+    // //afterUpdate(async () => { 
+    //     // if (browser) {
+    //         mounted = true
+    //         console.log('onMount callback')
+    //         const te = await import('tw-elements');
+    //         te.initTE({ Input: te.Input, Ripple: te.Ripple })
+    //         // let nameField = new te.Input(document.getElementById('nameField'))
+    //         // let emailField = new te.Input(document.getElementById('emailField'))
+    //         // let passwordField = new te.Input(document.getElementById('passwordField'))
+    //     // }
+    // });
+    // // beforeNavigate(() => {
+    // //     mounted = false
+    // // })
+    // import { invalidate, beforeNavigate } from '$app/navigation';
+
+    // // console.log($navigation)
+    // beforeNavigate(
+    //     () => { 
+    //         mounted = false
+    //         console.log('beforeNavigate callback')
+    //     }
+    // )
 
 
 //     import {afterNavigate} from '$app/navigation';
@@ -73,7 +79,7 @@
 	// 	email='',
 	// 	password=''
 	export let button = 'Sign up';
-    export let id:String
+    // export let id:String
 
 
     $: submit = async () =>{
@@ -90,9 +96,10 @@
 			<!-- <div class="p-4 md:w-8/12 lg:ml-6 lg:w-5/12 border-primary-400 border-4 rounded-2xl"> -->
 			<form on:submit|preventDefault={submit}>
 				<!-- Name input -->
-                {#key mounted}
+                <!-- {#key mounted} -->
 				<div class="relative mb-6" data-te-input-wrapper-init>
 					<input
+                        data-te-input-notch-ref
 						type="text"
 						class="peer block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="nameField"
@@ -105,7 +112,7 @@
 						>Full name
 					</label>
 				</div>
-                {/key}
+                <!-- {/key} -->
 
 				<!-- Email input -->
 				<div class="relative mb-6" data-te-input-wrapper-init>

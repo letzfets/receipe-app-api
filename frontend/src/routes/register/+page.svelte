@@ -3,4 +3,4 @@
 	import UserForm from '$components/UserForm.svelte';
 </script>
 
-<UserForm id="signUpForm" />
+<UserForm />
