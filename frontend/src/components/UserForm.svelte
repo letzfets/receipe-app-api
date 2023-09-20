@@ -4,24 +4,32 @@
 
 	initTE({ Input, Ripple });
 
-	export let name = 'Full Name',
-		email = 'Email address',
-		password = 'Password';
+	export let name:String,
+		email:String,
+		password:String;
 	export let button = 'Sign up';
+
+    $: submit = async () =>{
+        console.log('submit button pressed')
+        console.log('Name: ', name)
+        console.log('Email: ', email)
+        console.log('Password: ', password)
+}
 </script>
 
 <section class="flex w-full h-full justify-center">
 	<div class="md:w-8/12 lg:ml-6 lg:w-5/12 center py-12">
 		<div class="p-6 border-primary-400 border-4 rounded-2xl">
 			<!-- <div class="p-4 md:w-8/12 lg:ml-6 lg:w-5/12 border-primary-400 border-4 rounded-2xl"> -->
-			<form>
+			<form on:submit|preventDefault={submit}>
 				<!-- Name input -->
 				<div class="relative mb-6" data-te-input-wrapper-init>
 					<input
 						type="text"
 						class="peer block min-h-[auto] w-full rounded border-black-900 border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="nameField"
-						placeholder={name}
+						placeholder='Full Name'
+                        bind:value={name}
 					/>
 					<label
 						for="nameField"
@@ -36,7 +44,8 @@
 						type="email"
 						class="peer block min-h-[auto] w-full rounded border-black-900 border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="emailField"
-						placeholder={email}
+						placeholder={email?'':'Email address'}
+                        bind:value={email}
 					/>
 					<label
 						for="emailField"
@@ -51,7 +60,8 @@
 						type="password"
 						class="peer block min-h-[auto] w-full rounded border-black-900 border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="passwordField"
-						placeholder={password}
+						placeholder={password?'':'Password'}
+                        bind:value={password}
 					/>
 					<label
 						for="passwordField"
