@@ -5,9 +5,9 @@
 
 	const formatButton = () => {
 		if (invert) {
-			return 'bg-white hover:bg-blue-700 text-blue-400 font-bold py-2 px-4 rounded border border-blue-400';
+			return 'bg-white hover:bg-blue-700 text-blue-400 font-bold my-2 py-2 px-4 rounded border border-blue-400';
 		} else {
-			return 'bg-blue-400 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-4 rounded';
+			return 'bg-blue-400 hover:bg-blue-700 hover:text-white text-white font-bold my-2 py-2 px-4 rounded';
 		}
 	};
 </script>

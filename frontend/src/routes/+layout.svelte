@@ -24,7 +24,7 @@
 	<a href="/user">User</a>
 </nav> -->
 
-<nav class="p-2">
+<nav class="p-2 mx-2">
 	<div class="flex w-full flex-wrap items-center justify-between">
 		<div class="flex-grow space-x-4">
 			<NavButton url="/" link="Home" />
