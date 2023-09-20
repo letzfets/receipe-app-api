@@ -1,110 +1,35 @@
 <script lang="ts">
-	// import { beforeNavigate } from '$app/navigation';
-	// Initialization for ES Users
-    // import { Input, Ripple, initTE } from 'tw-elements';
-    // initTE({ Input, Ripple })
+	import { onMount } from 'svelte';
+	onMount(async () => {
+		const te = await import('tw-elements');
+		te.initTE({ Input: te.Input, Ripple: te.Ripple });
+	});
 
-    import { onMount } from 'svelte';
-    onMount(async () => {
-        const nameField = document.getElementById('nameField')//document.querySelectorAll('[data-te-input-wrapper-init]');
-        //nameField?.removeAttribute('data-te-input-notch-ref')
-        const te = await import('tw-elements');
-        te.initTE({ Input: te.Input, Ripple: te.Ripple })
-    })
-
-    // // import { browser } from '$app/environment';
-    // import { onMount, afterUpdate } from 'svelte';
-    // export let mounted:Boolean = false
-    // onMount(async () => {
-    // //afterUpdate(async () => { 
-    //     // if (browser) {
-    //         mounted = true
-    //         console.log('onMount callback')
-    //         const te = await import('tw-elements');
-    //         te.initTE({ Input: te.Input, Ripple: te.Ripple })
-    //         // let nameField = new te.Input(document.getElementById('nameField'))
-    //         // let emailField = new te.Input(document.getElementById('emailField'))
-    //         // let passwordField = new te.Input(document.getElementById('passwordField'))
-    //     // }
-    // });
-    // // beforeNavigate(() => {
-    // //     mounted = false
-    // // })
-    // import { invalidate, beforeNavigate } from '$app/navigation';
-
-    // // console.log($navigation)
-    // beforeNavigate(
-    //     () => { 
-    //         mounted = false
-    //         console.log('beforeNavigate callback')
-    //     }
-    // )
-
-
-//     import {afterNavigate} from '$app/navigation';
-// 	import { after } from 'node:test';
-
-// afterNavigate(
-//     callback: (
-// 		navigation: import('@sveltejs/kit').AfterNavigate
-// 	) => void
-// ) => void;
-
-//     afterNavigate((navigation) => {
-//         console.log('afterNavigate callback')
-//         console.log(navigation)
-//     })
-
-    // import { afterNavigate } from '$app/navigation';
-	// import type { AfterNavigate } from '@sveltejs/kit';
-
-	// let navigation: AfterNavigate;
-	// afterNavigate(async (_navigation) => {
-	// 	navigation = _navigation;
-    //     console.log('afterNavigate callback')
-    //     const te = await import('tw-elements');
-    //     te.initTE({ Input: te.Input, Ripple: te.Ripple })
-	// });
-
-    // import { onMount } from "svelte";
-    // import { Input, Ripple, initTE } from "tw-elements";
-    // initTE({ Input, Ripple  });
-
-    // onMount(() => {
-    //     initTE({ Input, Ripple  });
-    // });
-
-
-	// export let name='',
-	// 	email='',
-	// 	password=''
+	export let name = '',
+		email = '',
+		password = '';
 	export let button = 'Sign up';
-    // export let id:String
 
-
-    $: submit = async () =>{
-        console.log('submit button pressed')
-        // console.log('Name: ', name)
-        // console.log('Email: ', email)
-        // console.log('Password: ', password)
-}
+	$: submit = async () => {
+		console.log('submit button pressed');
+		console.log('Name: ', name);
+		console.log('Email: ', email);
+		console.log('Password: ', password);
+	};
 </script>
 
 <section class="flex w-full h-full justify-center">
 	<div class="md:w-8/12 lg:ml-6 lg:w-5/12 center py-12">
-		<div class="p-6 border-primary-400 border-4 rounded-2xl">
-			<!-- <div class="p-4 md:w-8/12 lg:ml-6 lg:w-5/12 border-primary-400 border-4 rounded-2xl"> -->
+		<div class="p-6 border-primary-400 bg-blue-50 border-4 rounded-2xl">
 			<form on:submit|preventDefault={submit}>
 				<!-- Name input -->
-                <!-- {#key mounted} -->
 				<div class="relative mb-6" data-te-input-wrapper-init>
 					<input
-                        data-te-input-notch-ref
 						type="text"
-						class="peer block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+						class="peer block min-h-[auto] w-full rounded bg-transparent text-lg px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-800 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="nameField"
-						placeholder='Full Name'
-                        
+						placeholder="Full Name"
+						bind:value={name}
 					/>
 					<label
 						for="nameField"
@@ -112,15 +37,15 @@
 						>Full name
 					</label>
 				</div>
-                <!-- {/key} -->
 
 				<!-- Email input -->
 				<div class="relative mb-6" data-te-input-wrapper-init>
 					<input
 						type="email"
-						class="peer block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+						class="peer block min-h-[auto] w-full rounded bg-transparent text-lg px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-800 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="emailField"
-						placeholder='Email address'
+						placeholder="Email address"
+						bind:value={email}
 					/>
 					<label
 						for="emailField"
@@ -133,9 +58,10 @@
 				<div class="relative mb-6" data-te-input-wrapper-init>
 					<input
 						type="password"
-						class="peer block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+						class="peer block min-h-[auto] w-full rounded bg-transparent text-lg px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-800 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
 						id="passwordField"
-						placeholder='Password'
+						placeholder="Password"
+						bind:value={password}
 					/>
 					<label
 						for="passwordField"
