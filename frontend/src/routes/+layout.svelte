@@ -7,7 +7,7 @@
 
 	// TBD: check if this is correct
 	// TBD: move to store?
-	const login = writable(false);
+	const authenticated = writable(false);
 </script>
 
 <!-- <nav class="p-2 space-x-4">
@@ -33,7 +33,7 @@
 		</div>
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
-			{#if !$login}
+			{#if !$authenticated}
 				<NavButton url="/register" link="Register" invert />
 				<NavButton url="/login" link="Login" />
 			{:else}
