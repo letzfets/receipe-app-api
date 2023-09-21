@@ -31,28 +31,27 @@ describe('POST data to backend', () => {
 			password: 'secretPassword'
 		};
 		server.use(
-			rest.post('http://host.docker.internal:8000/api/user/create', (req, res, ctx) => {
-				// return res((res) => {
-				// 	res.status = 200
-				// 	res.body = JSON.stringify({
-				// 		name: payload.name,
-				// 		email: payload.email
-				// 	})
-				// 	return res
-				// }
-				return res(
-					ctx.status(200),
-					ctx.json({
-						name: payload.name,
-						email: payload.email
-					})
-				);
+			rest.post('http://host.docker.internal:8000/api/user/create', async (req, res, ctx) => {
+				const requestData = await req.json();
+				if (JSON.stringify(requestData) === JSON.stringify(payload)) {
+					return res(
+						ctx.status(200),
+						ctx.json({
+							name: payload.name,
+							email: payload.email
+						})
+					);
+				} else {
+					return res(
+						ctx.status(400),
+						ctx.json({
+							error: 'Bad Request'
+						})
+					);
+				}
 			})
 		);
-
 		const response = await postBackend('/api/user/create', payload);
-		// console.log(response);
-		// expect(response.status).toBe(200);
 		expect(response).toContain({ name: 'User One', email: 'user@example.com' });
 	});
 	test.todo('should read the posted data back from the backend');
