@@ -3,7 +3,7 @@ import { postBackend } from '$lib/backend';
 
 // TBD: add type PageServerLoad here?
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ cookies, request }) => {
 		const data = await request.formData();
 		const payload = {
 			name: data.get('name')?.toString(),
@@ -12,6 +12,9 @@ export const actions = {
 		};
 		// console.log(payload)
 		const userCreated = await postBackend('/api/user/create/', payload);
+		delete payload.name;
+		const accessToken = await postBackend('/api/user/token/', payload);
+		cookies.set('accessToken', accessToken.token)
 		return {
 			status: 200,
 			body: {

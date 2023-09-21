@@ -1,4 +1,4 @@
-<a class="w-10 h-10" href="/user">
+<a class="w-10 h-10 py-2" href="/user">
 	<svg
 		viewBox="0 0 8.4666669 8.4666669"
 		id="svg8"

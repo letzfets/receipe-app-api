@@ -1,13 +1,18 @@
-<script>
+<script lang="ts">
 	import NavButton from '$components/NavButton.svelte';
 	import UserButton from '$components/UserButton.svelte';
+	// import { writable } from 'svelte/store';
+	// import { getContext } from 'svelte';
 	import '../app.css';
-
-	import { writable } from 'svelte/store';
-
+	import type { LayoutData } from './$types';
+	
+	export let data: LayoutData;
+	$: loggedIn = data.loggedIn;
+	// const $loggedIn = data.loggedIn;
 	// TBD: check if this is correct
 	// TBD: move to store?
-	const authenticated = writable(false);
+	// const loggedIn = writable(false);
+	// console.log(loggedIn)
 </script>
 
 <!-- <nav class="p-2 space-x-4">
@@ -33,7 +38,7 @@
 		</div>
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
-			{#if !$authenticated}
+			{#if !loggedIn}
 				<NavButton url="/register" link="Register" invert />
 				<NavButton url="/login" link="Login" />
 			{:else}
