@@ -6,13 +6,12 @@ export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
 		const payload = {
-			name: data.get('name'),
-			email: data.get('email'),
-			password: data.get('password')
+			name: data.get('name')?.toString(),
+			email: data.get('email')?.toString(),
+			password: data.get('password')?.toString()
 		};
 		// console.log(payload)
 		const userCreated = await postBackend('/api/user/create/', payload);
-		console.log(userCreated);
 		return {
 			status: 200,
 			body: {
