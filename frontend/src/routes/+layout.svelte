@@ -5,7 +5,7 @@
 	// import { getContext } from 'svelte';
 	import '../app.css';
 	import type { LayoutData } from './$types';
-	
+
 	export let data: LayoutData;
 	$: loggedIn = data.loggedIn;
 	// const $loggedIn = data.loggedIn;

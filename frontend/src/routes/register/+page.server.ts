@@ -6,15 +6,15 @@ export const actions = {
 	default: async ({ cookies, request }) => {
 		const data = await request.formData();
 		const payload = {
-			name: data.get('name')?.toString(),
-			email: data.get('email')?.toString(),
-			password: data.get('password')?.toString()
+			name: data.get('name')?.toString() || '',
+			email: data.get('email')?.toString() || '',
+			password: data.get('password')?.toString() || ''
 		};
 		// console.log(payload)
 		const userCreated = await postBackend('/api/user/create/', payload);
 		delete payload.name;
 		const accessToken = await postBackend('/api/user/token/', payload);
-		cookies.set('accessToken', accessToken.token)
+		cookies.set('accessToken', accessToken.token);
 		return {
 			status: 200,
 			body: {
