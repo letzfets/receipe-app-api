@@ -2,15 +2,17 @@
 	import NavButton from '$components/NavButton.svelte';
 	import UserButton from '$components/UserButton.svelte';
 	import '../app.css';
-	// import type { LayoutData } from './$types';
+	import type { LayoutData } from './$types';
 	import { user_store } from '$lib/stores';
 
-	$: console.log($user_store);
-	// export const data:LayoutData = '';
-	export let loggedIn = false;
-	if ($user_store) {
-		loggedIn = $user_store.loggedIn || false;
-	}
+	// $: console.log($user_store);
+	export let data:LayoutData;
+	// export let loggedIn = false;
+	// if ($user_store) {
+	// 	loggedIn = $user_store.loggedIn || false;
+	// }
+	// console.log(data)
+	$user_store = data
 	// if(){
 	// 	console.log(data);
 	// 	loggedIn = true
@@ -48,7 +50,7 @@
 		</div>
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
-			{#if !loggedIn}
+			{#if !$user_store?.loggedIn}
 				<NavButton url="/register" link="Register" invert />
 				<NavButton url="/login" link="Login" />
 			{:else}
@@ -63,8 +65,3 @@
 <main>
 	<slot />
 </main>
-
-<button class="bg-blue-400 rounded m-4 p-2" on:click={console.log($user_store)}
-	>Current $user_store</button
->
-<code><pre>{JSON.stringify($user_store, null, ' ')}</pre></code>
