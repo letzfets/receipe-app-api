@@ -1,13 +1,23 @@
 <script lang="ts">
 	import NavButton from '$components/NavButton.svelte';
 	import UserButton from '$components/UserButton.svelte';
-	// import { writable } from 'svelte/store';
-	// import { getContext } from 'svelte';
 	import '../app.css';
-	import type { LayoutData } from './$types';
+	// import type { LayoutData } from './$types';
+	import { user_store } from '$lib/stores';
 
-	export let data: LayoutData;
-	$: loggedIn = data.loggedIn;
+	$: console.log($user_store);
+	// // export let data: LayoutData;
+	export let loggedIn = false;
+	if($user_store){
+		loggedIn = $user_store.loggedIn || false;
+	}
+	// if(){
+	// 	console.log(data);
+	// 	loggedIn = true
+	// }
+		
+	// console.log(data);
+	// $: loggedIn = data.loggedIn;
 	// const $loggedIn = data.loggedIn;
 	// TBD: check if this is correct
 	// TBD: move to store?
@@ -53,3 +63,6 @@
 <main>
 	<slot />
 </main>
+
+<button class="bg-blue-400 rounded m-4 p-2" on:click={console.log($user_store)}>Current $user_store</button>
+<code><pre>{JSON.stringify($user_store, null, ' ')}</pre></code>

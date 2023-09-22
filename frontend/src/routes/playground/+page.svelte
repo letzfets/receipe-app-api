@@ -6,10 +6,13 @@
 <div class="mx-5">
 	<ul>
 		<li>
-			<a href="./playground/components" class={linkLayout}> Components </a>
+			<a href="./playground/components" class={linkLayout}>Components </a>
 		</li>
 		<li>
-			<a href="./playground/backend" class={linkLayout}> Backend </a>
+			<a href="./playground/backend" class={linkLayout}>Backend </a>
+		</li>
+		<li>
+			<a href="./playground/counter" class={linkLayout}>Counter </a>
 		</li>
 	</ul>
 </div>

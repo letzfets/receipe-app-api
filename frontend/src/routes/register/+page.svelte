@@ -6,7 +6,7 @@
 	export let form;
 	if (form?.status === 200) {
 		// console.log(form.body.userCreated);
-		goto('/');
+		// goto('/');// TBD: use onMount or redirect?
 	}
 </script>
 
