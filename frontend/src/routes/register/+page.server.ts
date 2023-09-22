@@ -14,13 +14,13 @@ export const actions = {
 		// console.log(payload)
 		const userCreated = await postBackend('/api/user/create/', payloadRegister);
 		// $user_store = userCreated;
-		const user = userCreated
+		const user = userCreated;
 		user.loggedIn = true;
 		user_store.set(user);
 		const payloadAuthenticate = {
 			email: payloadRegister.email,
 			password: payloadRegister.password
-		}
+		};
 		const accessToken = await postBackend('/api/user/token/', payloadAuthenticate);
 		cookies.set('accessToken', accessToken.token);
 		return {

@@ -1,15 +1,15 @@
 <script lang="ts">
-    import { count } from '$lib/stores';
+	import { count } from '$lib/stores';
 
-    const add = () => {
-        count.update((n) => n + 1);
-    };
-    const subtract = () => {
-        count.update((n) => n - 1);
-    };
-    const reset = () => {
-        count.set(0);
-    };
+	const add = () => {
+		count.update((n) => n + 1);
+	};
+	const subtract = () => {
+		count.update((n) => n - 1);
+	};
+	const reset = () => {
+		count.set(0);
+	};
 </script>
 
 <p class="text-8xl m-10">{$count}</p>

@@ -3,8 +3,8 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
-	export let data: PageData;
+	export const data: PageData = '';
 
-	$user_store = null
+	$user_store = null;
 	onMount(() => goto('/'));
 </script>

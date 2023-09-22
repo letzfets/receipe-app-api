@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	// import { goto } from '$app/navigation';
 	export const ssr = false;
 	import UserForm from '$components/UserForm.svelte';
 

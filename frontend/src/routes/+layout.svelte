@@ -6,16 +6,16 @@
 	import { user_store } from '$lib/stores';
 
 	$: console.log($user_store);
-	// // export let data: LayoutData;
+	// export const data:LayoutData = '';
 	export let loggedIn = false;
-	if($user_store){
+	if ($user_store) {
 		loggedIn = $user_store.loggedIn || false;
 	}
 	// if(){
 	// 	console.log(data);
 	// 	loggedIn = true
 	// }
-		
+
 	// console.log(data);
 	// $: loggedIn = data.loggedIn;
 	// const $loggedIn = data.loggedIn;
@@ -64,5 +64,7 @@
 	<slot />
 </main>
 
-<button class="bg-blue-400 rounded m-4 p-2" on:click={console.log($user_store)}>Current $user_store</button>
+<button class="bg-blue-400 rounded m-4 p-2" on:click={console.log($user_store)}
+	>Current $user_store</button
+>
 <code><pre>{JSON.stringify($user_store, null, ' ')}</pre></code>
