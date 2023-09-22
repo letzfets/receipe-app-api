@@ -6,13 +6,13 @@
 	import { user_store } from '$lib/stores';
 
 	// $: console.log($user_store);
-	export let data:LayoutData;
+	export let data: LayoutData;
 	// export let loggedIn = false;
 	// if ($user_store) {
 	// 	loggedIn = $user_store.loggedIn || false;
 	// }
 	// console.log(data)
-	$user_store = data
+	$user_store = data;
 	// if(){
 	// 	console.log(data);
 	// 	loggedIn = true

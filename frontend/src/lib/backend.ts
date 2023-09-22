@@ -4,12 +4,12 @@ import type { User } from 'src/types.d.ts';
 const host = 'http://host.docker.internal:8000';
 
 export const getBackend = async (url: string, accessToken: string = '') => {
-	let headers = {
+	const headers = {
 		'Content-Type': 'application/json',
-		'Authorization': ''
-	}
-	if (accessToken){
-		headers.Authorization = `Token ${accessToken}`
+		Authorization: ''
+	};
+	if (accessToken) {
+		headers.Authorization = `Token ${accessToken}`;
 	}
 	const response = await fetch(host + url, {
 		method: 'GET',

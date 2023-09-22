@@ -5,20 +5,20 @@ import type { User } from 'src/types.d.ts';
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
 	// let authenticated = false;
-    let user:User = {
-        loggedIn: false,
-        email: '',
-    }
+	let user: User = {
+		loggedIn: false,
+		email: ''
+	};
 	if (cookies.get('accessToken')) {
 		// authenticated = true;
-        user = await getBackend('/api/user/me', cookies.get('accessToken'))
-        // console.log('user retrieved from backend:');
-        // console.log(user);
-        user.loggedIn = true;
+		user = await getBackend('/api/user/me', cookies.get('accessToken'));
+		// console.log('user retrieved from backend:');
+		// console.log(user);
+		user.loggedIn = true;
 		// user_store.set(user);
 		//user_store.subscribe((user:User) => user.loggedIn = true);
-	} 
-    // else {
+	}
+	// else {
 	// 	// user_store.set(user);
 	// 	// authenticated = false;
 	// 	// user_store.subscribe((user:User) => user.loggedIn = false);
