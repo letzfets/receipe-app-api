@@ -5,41 +5,9 @@
 	import type { LayoutData } from './$types';
 	import { user_store } from '$lib/stores';
 
-	// $: console.log($user_store);
 	export let data: LayoutData;
-	// export let loggedIn = false;
-	// if ($user_store) {
-	// 	loggedIn = $user_store.loggedIn || false;
-	// }
-	// console.log(data)
 	$user_store = data;
-	// if(){
-	// 	console.log(data);
-	// 	loggedIn = true
-	// }
-
-	// console.log(data);
-	// $: loggedIn = data.loggedIn;
-	// const $loggedIn = data.loggedIn;
-	// TBD: check if this is correct
-	// TBD: move to store?
-	// const loggedIn = writable(false);
-	// console.log(loggedIn)
 </script>
-
-<!-- <nav class="p-2 space-x-4">
-	<a href="/">
-		<button
-			type="button"
-			class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-		>
-			Home
-		</button>
-	</a>
-	<a href="/playground">Playground</a>
-	<a href="/recipe">Recipe</a>
-	<a href="/user">User</a>
-</nav> -->
 
 <nav class="p-2 mx-2">
 	<div class="flex w-full flex-wrap items-center justify-between">
@@ -55,7 +23,8 @@
 				<NavButton url="/login" link="Login" />
 			{:else}
 				<UserButton />
-				<!-- might just redirect to /home and delete session information -->
+				<!-- needs to redirect to /home and delete session information -->
+				<!-- TBD: write tests for logout -->
 				<NavButton url="/logout" link="Logout" />
 			{/if}
 		</div>

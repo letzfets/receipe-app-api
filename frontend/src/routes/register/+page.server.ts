@@ -11,9 +11,7 @@ export const actions = {
 			email: data.get('email')?.toString() || '',
 			password: data.get('password')?.toString() || ''
 		};
-		// console.log(payload)
 		const userCreated = await postBackend('/api/user/create/', payloadRegister);
-		// $user_store = userCreated;
 		const user = userCreated;
 		user.loggedIn = true;
 		user_store.set(user);
@@ -26,16 +24,12 @@ export const actions = {
 		return {
 			status: 200,
 			body: {
-				// message: "user Created",
 				userCreated
 			}
 			// TBD: add a redirect here
 		};
 	}
 };
-// {
-// 	const userCreated = await postBackend('/api/user/create', );
-
 // 	if (schema === null) {
 // 		return error(404, 'Unavailable');
 // 	}
