@@ -27,7 +27,6 @@ export const actions = {
 				userCreated
 			},
 			redirect: '/dashboard'
-			// TBD: add a redirect here
 		};
 	}
 };
