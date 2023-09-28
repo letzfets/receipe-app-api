@@ -12,17 +12,17 @@ export const actions = {
 		};
 		const accessToken = await postBackend('/api/user/token/', payloadLogin);
 		let response = {
-            status: NaN,
-            body: {},
-            redirect: '',
-        };
+			status: NaN,
+			body: {},
+			redirect: ''
+		};
 		if (!accessToken || accessToken.token === 'Invalid token.') {
 			response = {
 				status: 401,
 				body: {
 					message: 'Unauthorized'
 				},
-                redirect: '/login',
+				redirect: '/login'
 			};
 		} else {
 			const user = await getBackend('/api/user/me/', accessToken.token);
