@@ -25,7 +25,8 @@ export const actions = {
 			status: 200,
 			body: {
 				userCreated
-			}
+			},
+			redirect: '/dashboard'
 			// TBD: add a redirect here
 		};
 	}

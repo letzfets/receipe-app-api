@@ -6,7 +6,9 @@
 	import { user_store } from '$lib/stores';
 
 	export let data: LayoutData;
-	$user_store = data;
+	if (data?.loggedIn) {
+		$user_store = data;
+	}
 </script>
 
 <nav class="p-2 mx-2">
