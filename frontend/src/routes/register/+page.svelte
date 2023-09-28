@@ -11,4 +11,4 @@
 	}
 </script>
 
-<UserForm />
+<UserForm type="signup" />
