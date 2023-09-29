@@ -575,3 +575,24 @@ Svelte is missing possibilities for programmatically fill slots, so no testing o
 
 but implemented route guard as component and session handling (token storage) through a cookie
 
+# Build recipe API (as APIView)
+
+## Design
+
+Features:
+- create,
+- list,
+- view detail,
+- update, and
+- delete
+a recipe
+
+Endpoints:
+- `/recipes/`
+    - `GET` list all recipes
+    - `POST` create a recipe
+- `/recipes/<recipe_id>`
+    - `GET` view details of a recipe
+    - `PUT/PATCH` update a recipe
+    - `DELETE` delete a recipe
+
