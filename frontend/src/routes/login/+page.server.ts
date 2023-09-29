@@ -16,7 +16,11 @@ export const actions = {
 			body: {},
 			redirect: ''
 		};
-		if (!accessToken || accessToken.token === 'Invalid token.') {
+		if (
+			!accessToken ||
+			accessToken.token === 'undefined' ||
+			accessToken.detail === 'Invalid token.'
+		) {
 			response = {
 				status: 401,
 				body: {

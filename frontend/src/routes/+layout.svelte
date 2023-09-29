@@ -4,6 +4,7 @@
 	import '../app.css';
 	import type { LayoutData } from './$types';
 	import { user_store } from '$lib/stores';
+	import Guard from '$components/Guard.svelte';
 
 	export let data: LayoutData;
 	if (data?.loggedIn) {
@@ -16,7 +17,9 @@
 		<div class="flex-grow space-x-4">
 			<NavButton url="/" link="Home" />
 			<NavButton url="/playground" link="Playground" />
-			<NavButton url="/recipe" link="Recipe" />
+			<Guard redirect="/">
+				<NavButton url="/dashboard" link="Dashboard" />
+			</Guard>
 		</div>
 		<div class="flex space-x-4">
 			<!-- <NavButton url="/user" link="User" /> -->
