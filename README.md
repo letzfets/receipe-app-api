@@ -566,3 +566,12 @@ Install following
 [Tailwind CSS installation](https://tailwindcss.com/docs/guides/sveltekit)
 and add
 [Tailwind Elements installation](https://tailwind-elements.com/docs/standard/integrations/svelte-integration/)
+
+# Register, Login and Logout at client side
+
+including test driven development, wherever possible.
+
+Svelte is missing possibilities for programmatically fill slots, so no testing of route guard
+
+but implemented route guard as component and session handling (token storage) through a cookie
+
