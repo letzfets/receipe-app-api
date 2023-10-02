@@ -612,3 +612,17 @@ A view
 used already here for the authentication endpoints
 - focused around HTTP methods
 - class methods for HTTP methods
+    - *GET*, *POST*, *PUT*, *PATCH*, *DELETE* (classes are in lowercase)
+- provide flexibility over URLs and logic
+- useful for non CRUD APIs
+    - Create, Read, Update, Delete
+    - Bespoke logic (e.g. auth, jobs, calls to external APIs)
+
+
+### Viewsets
+
+- focused around actions
+    - retrieve, list, update, partial update, destroy
+- map to django models
+- use routers to generate URLs automatically
+- Great for CRUD operations on models
