@@ -626,3 +626,8 @@ used already here for the authentication endpoints
 - map to django models
 - use routers to generate URLs automatically
 - Great for CRUD operations on models
+
+
+## Recipe Model
+
+all models are in core app
