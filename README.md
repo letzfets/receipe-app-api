@@ -631,3 +631,11 @@ used already here for the authentication endpoints
 ## Recipe Model
 
 all models are in core app
+
+after registering the model in the app with `admin.site.register(models.Recipe)`, run migrations
+
+`docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py makemigrations"`
+
+For testing purposes, this is enough, because the django test runner applies all migrations before running the tests.
+
+In development, the `compose.dev.yml` file runs the migrations - but for production the migration command is missing!
