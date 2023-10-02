@@ -596,3 +596,19 @@ Endpoints:
     - `PUT/PATCH` update a recipe
     - `DELETE` delete a recipe
 
+## APIView vs Viewsets
+
+A view
+- handles a request made to a URL
+- Django uses functions
+- Django Rest Framework (DRF) builds on top of that and adds classes
+    - reusable logic (reusable from DRF)
+    - override behavior
+- DRF also supports function based views (via decorators)
+- both `APIView` and `Viewsets` are DRF base classes
+
+### APIView
+
+used already here for the authentication endpoints
+- focused around HTTP methods
+- class methods for HTTP methods
