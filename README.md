@@ -639,3 +639,18 @@ after registering the model in the app with `admin.site.register(models.Recipe)`
 For testing purposes, this is enough, because the django test runner applies all migrations before running the tests.
 
 In development, the `compose.dev.yml` file runs the migrations - but for production the migration command is missing!
+
+## Create recipe app
+
+`docker compose -f compose.yml -f compose.dev.yml run --rm backend sh -c "python manage.py startapp recipe"`
+
+In directory `recipe` it creates a subdirectory `migrations` (not needed) and files
+- `__init__.py`
+- `admin.py` (not needed)
+- `apps.py`
+- `models.py` (not needed - core app used instead)
+- `tests.py` (not needed)
+- `views.py`
+
+
+And enable app in settings.py under `INSTALLED_APPS`
