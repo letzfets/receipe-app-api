@@ -38,7 +38,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if self.action == "list":
             # important don't call the serializer class with ()!
             # like serializers.RecipeDetailSerializer() because
-            # get_serializer_class() expects a prototype of the class,
+            # get_serializer_class() expects an object of the class,
             # e.g. serializers.RecipeDetailSerializer.
             return serializers.RecipeSerializer
 
